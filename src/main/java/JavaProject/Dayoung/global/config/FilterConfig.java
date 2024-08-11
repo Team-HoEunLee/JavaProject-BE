@@ -27,5 +27,4 @@ public class FilterConfig extends SecurityConfigurerAdapter<DefaultSecurityFilte
         http.addFilterBefore(jwtTokenFilter, UsernamePasswordAuthenticationFilter.class)
                 .addFilterBefore(globalExceptionFilter, JwtTokenFilter.class);
     }
-
 }

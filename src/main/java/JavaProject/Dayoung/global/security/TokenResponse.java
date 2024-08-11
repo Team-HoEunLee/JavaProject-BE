@@ -11,4 +11,3 @@ public class TokenResponse {
 
     private String refreshToken;
 }
-

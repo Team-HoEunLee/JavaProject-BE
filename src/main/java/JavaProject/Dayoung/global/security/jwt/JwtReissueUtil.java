@@ -26,7 +26,7 @@ public class JwtReissueUtil {
 
     public TokenResponse reissue(String refreshToken) {
 
-        if(!isRefreshToken(refreshToken)) {
+        if (!isRefreshToken(refreshToken)) {
             throw InvalidTokenException.EXCEPTION;
         }
 
@@ -65,5 +65,4 @@ public class JwtReissueUtil {
         UserDetails userDetails = authDetailsService.loadUserByUsername(claims.getSubject());
         return new UsernamePasswordAuthenticationToken(userDetails, "", userDetails.getAuthorities());
     }
-
 }

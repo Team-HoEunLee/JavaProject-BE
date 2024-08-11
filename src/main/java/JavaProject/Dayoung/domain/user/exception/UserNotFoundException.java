@@ -6,7 +6,8 @@ import JavaProject.Dayoung.global.error.exception.ErrorCode;
 
 public class UserNotFoundException extends DayoungException {
     public static final DayoungException EXCEPTION = new UserNotFoundException();
-    private UserNotFoundException(){
-        super (ErrorCode.USER_NOT_FOUND);
+
+    private UserNotFoundException() {
+        super(ErrorCode.USER_NOT_FOUND);
     }
 }

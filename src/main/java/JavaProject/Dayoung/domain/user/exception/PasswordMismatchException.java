@@ -6,7 +6,8 @@ import JavaProject.Dayoung.global.error.exception.ErrorCode;
 
 public class PasswordMismatchException extends DayoungException {
     public static final DayoungException EXCEPTION = new PasswordMismatchException();
-    private PasswordMismatchException(){
+
+    private PasswordMismatchException() {
         super(ErrorCode.PASSWORD_MISMATCH);
     }
 }

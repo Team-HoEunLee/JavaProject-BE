@@ -1,6 +1,5 @@
 package JavaProject.Dayoung.global.config;
 
-import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -21,9 +20,9 @@ public class RedisConfig {
     private String redisPort;
 
     @Bean//Redis 서버와의 연결을 설정하는 빈 메서드
-    public RedisConnectionFactory redisConnectionFactory(){
+    public RedisConnectionFactory redisConnectionFactory() {
         RedisStandaloneConfiguration redisConfig =
-                new RedisStandaloneConfiguration(redisHost,Integer.parseInt(redisPort));
+                new RedisStandaloneConfiguration(redisHost, Integer.parseInt(redisPort));
         return new LettuceConnectionFactory(redisConfig);
     }
 
@@ -33,5 +32,4 @@ public class RedisConfig {
         redisTemplate.setConnectionFactory(connectionFactory);
         return redisTemplate;
     }
-
 }

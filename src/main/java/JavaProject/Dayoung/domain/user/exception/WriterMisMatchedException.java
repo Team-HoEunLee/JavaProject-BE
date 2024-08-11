@@ -5,7 +5,8 @@ import JavaProject.Dayoung.global.error.exception.ErrorCode;
 
 public class WriterMisMatchedException extends DayoungException {
     public static final DayoungException EXCEPTION = new WriterMisMatchedException();
-    private WriterMisMatchedException(){
+
+    private WriterMisMatchedException() {
         super(ErrorCode.WRITER_MISMATCH);
     }
 }

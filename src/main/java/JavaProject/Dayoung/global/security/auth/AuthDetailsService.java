@@ -19,9 +19,9 @@ public class AuthDetailsService implements UserDetailsService {
     public UserDetails loadUserByUsername(String accountId) {
 
         User user = userRepository.findByAccountId(accountId)
-                .orElseThrow(()-> UserNotFoundException.EXCEPTION);
+                .orElseThrow(() -> UserNotFoundException.EXCEPTION);
 
         return new AuthDetails(user.getAccountId());
 
-     }
+    }
 }

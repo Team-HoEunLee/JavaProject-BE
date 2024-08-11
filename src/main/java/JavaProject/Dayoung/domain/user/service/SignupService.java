@@ -9,13 +9,13 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+
 @Service
 @RequiredArgsConstructor
 public class SignupService {
 
     private final UserRepository userRepository;
     private final PasswordEncoder passwordEncoder;
-
 
     @Transactional
     public void signUp(SignupRequest signupRequest) {
@@ -28,11 +28,11 @@ public class SignupService {
 
         userRepository.save(
                 User.builder()
-                    .accountId(signupRequest.getAccountId())
-                    .accountId(signupRequest.getEmail())
-                    .password(password)
-                    .role(Role.STUDENT)
-                    .build()
+                        .accountId(signupRequest.getAccountId())
+                        .accountId(signupRequest.getEmail())
+                        .password(password)
+                        .role(Role.STUDENT)
+                        .build()
         );
     }
 }

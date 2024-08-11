@@ -1,7 +1,8 @@
 package JavaProject.Dayoung.global.error;
 
 import JavaProject.Dayoung.global.error.exception.ErrorCode;
-import lombok.*;
+import lombok.Builder;
+import lombok.Getter;
 
 import java.time.LocalDateTime;
 
@@ -31,5 +32,4 @@ public class ErrorResponse {
                 .description(description)
                 .build();
     }
-
 }

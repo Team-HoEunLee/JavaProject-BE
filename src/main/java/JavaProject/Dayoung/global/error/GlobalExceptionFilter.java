@@ -5,6 +5,7 @@ import JavaProject.Dayoung.global.error.exception.ErrorCode;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.filter.OncePerRequestFilter;
+
 import javax.servlet.FilterChain;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -24,10 +25,10 @@ public class GlobalExceptionFilter extends OncePerRequestFilter {
 
         try {
             filterChain.doFilter(request, response);
-        } catch (DayoungException e){
+        } catch (DayoungException e) {
             ErrorCode errorCode = e.getErrorCode();
             writeErrorResponse(response, errorCode.getStatusCode(), ErrorResponse.of(errorCode, errorCode.getMessage()));
-        } catch (Exception e){
+        } catch (Exception e) {
             writeErrorResponse(response, response.getStatus(), ErrorResponse.of(response.getStatus(), e.getMessage()));
         }
     }

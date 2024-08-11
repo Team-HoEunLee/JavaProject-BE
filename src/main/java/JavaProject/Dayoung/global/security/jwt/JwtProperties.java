@@ -1,6 +1,5 @@
 package JavaProject.Dayoung.global.security.jwt;
 
-import lombok.Builder;
 import lombok.Getter;
 import org.springframework.stereotype.Component;
 
@@ -16,15 +15,19 @@ public class JwtProperties {
     public String getHeader() {
         return header;
     }
+
     public String getPrefix() {
         return prefix;
     }
+
     public String getSecretKey() {
         return secretKey;
     }
+
     public Long getAccessExp() {
         return accessExp;
     }
+
     public Long getRefreshExp() {
         return refreshExp;
     }

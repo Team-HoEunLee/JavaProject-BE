@@ -26,8 +26,7 @@ public class LoginService {
         User user = userRepository.findByAccountId(request.getAccountId())
                 .orElseThrow(() -> UserNotFoundException.EXCEPTION);
 
-
-        if(!passwordEncoder.matches(request.getPassword(), user.getPassword())){
+        if (!passwordEncoder.matches(request.getPassword(), user.getPassword())) {
             throw PasswordMismatchException.EXCEPTION;
         }
 

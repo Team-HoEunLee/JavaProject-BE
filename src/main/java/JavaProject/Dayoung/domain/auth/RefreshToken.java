@@ -8,7 +8,7 @@ import org.springframework.data.redis.core.RedisHash;
 @Getter
 @Builder
 @RedisHash
-public class RefreshToken{
+public class RefreshToken {
 
     @Id
     private String accountId;
@@ -21,5 +21,4 @@ public class RefreshToken{
         this.expiration = expiration;
         return this;
     }
-
 }
