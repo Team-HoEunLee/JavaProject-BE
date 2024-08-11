@@ -18,8 +18,6 @@ import javax.persistence.Id;
 @Entity
 @Getter
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
-@Builder
-@AllArgsConstructor
 public class User {
 
     @Id
@@ -29,10 +27,22 @@ public class User {
     @Column(columnDefinition = "varchar(30)", nullable = false, unique = true)
     private String accountId;
 
-    @Column(nullable = false)
+    @Column(columnDefinition = "varchar(30)", nullable = false)
+    private String email;
+
+    @Column(columnDefinition = "varchar(80)", nullable = false)
     private String password;
 
     @Enumerated(EnumType.STRING)
     @Column(nullable = false)
     private Role role;
+
+    @Builder
+    public User(Long id, String accountId, String email, String password, Role role) {
+        this.id = id;
+        this.accountId = accountId;
+        this.email = email;
+        this.password = password;
+        this.role = role;
+    }
 }
