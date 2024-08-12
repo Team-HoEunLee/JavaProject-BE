@@ -29,7 +29,7 @@ public class SignupService {
         userRepository.save(
                 User.builder()
                         .accountId(signupRequest.getAccountId())
-                        .accountId(signupRequest.getEmail())
+                        .email(signupRequest.getEmail())
                         .password(password)
                         .role(Role.STUDENT)
                         .build()
