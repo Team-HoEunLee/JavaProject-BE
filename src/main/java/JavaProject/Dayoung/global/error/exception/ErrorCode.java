@@ -20,6 +20,9 @@ public enum ErrorCode {
     WRITER_MISMATCH(403, "Writer mismatch"),
     ACCOUNT_ID_ALREADY_EXISTS(409, "AccountId already exists"),
 
+    //quiz
+    QUIZ_NOT_FOUND(404, "Quiz not found"),
+
     //admin
     CODE_MISMATCH(404,"Code mismatch"),
     NOT_ADMIN(403, "Not admin"),
@@ -30,9 +33,6 @@ public enum ErrorCode {
     //ban
     BAN_NOT_FOUND(404, "Ban not found"),
     BANNED_USER(403, "Banned User"),
-
-    //report
-    REPORT_NOT_FOUND(404, "Report not found"),
 
     //image
     IMAGE_UPLOAD_FAIL(400, "Image upload fail"),
