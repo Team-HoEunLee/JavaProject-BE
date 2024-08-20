@@ -34,11 +34,13 @@ public class Quiz {
     @Column(nullable = false)
     private Area area;
 
+    @Enumerated(EnumType.STRING)
+    @Column(nullable = false)
+    private IsSolved isSolved;
+
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "user_id", nullable = false)
     private User user;
-
-    private IsSolved isSolved;
 
     @Builder
     public Quiz(String title, String question, Level level, Area area, User user, IsSolved isSolved) {
