@@ -2,9 +2,9 @@ package JavaProject.Dayoung.domain.quiz.presentation.dto.response;
 
 import JavaProject.Dayoung.domain.quiz.entity.Quiz;
 import JavaProject.Dayoung.domain.quiz.entity.type.Area;
+import JavaProject.Dayoung.domain.quiz.entity.type.IsSolved;
 import JavaProject.Dayoung.domain.quiz.entity.type.Level;
 import lombok.AllArgsConstructor;
-import lombok.Builder;
 import lombok.Getter;
 
 @Getter
@@ -16,6 +16,7 @@ public class QuizDetailResponse {
     private final String question;
     private final Level level;
     private final Area area;
+    private final IsSolved isSolved;
 
     public QuizDetailResponse(Quiz quiz) {
         quizId = quiz.getQuizId();
@@ -23,5 +24,6 @@ public class QuizDetailResponse {
         question = quiz.getQuestion();
         level = quiz.getLevel();
         area = quiz.getArea();
+        isSolved = quiz.getIsSolved();
     }
 }
