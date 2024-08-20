@@ -34,11 +34,6 @@ public class QuizController {
         return queryQuizDetailService.getQuizDetail(quizId);
     }
 
-    @GetMapping("/{list}")
-    public QuizListResponse getQuizList() {
-        return queryQuizService.getQuizList();
-    }
-
     @GetMapping("/search/{title}")
     public QuizListResponse searchQuiz(@PathVariable("title") String title) {
         return searchQuizService.searchQuiz(title);
