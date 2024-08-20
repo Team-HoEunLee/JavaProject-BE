@@ -19,10 +19,14 @@ public class RedisConfig {
     @Value("${spring.redis.port}")
     private String redisPort;
 
+    @Value("${spring.redis.password}")
+    private String password;
+
     @Bean//Redis 서버와의 연결을 설정하는 빈 메서드
     public RedisConnectionFactory redisConnectionFactory() {
         RedisStandaloneConfiguration redisConfig =
                 new RedisStandaloneConfiguration(redisHost, Integer.parseInt(redisPort));
+        redisConfig.setPassword(password);
         return new LettuceConnectionFactory(redisConfig);
     }
 
