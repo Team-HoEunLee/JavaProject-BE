@@ -1,6 +1,5 @@
 package JavaProject.Dayoung.domain.quiz.service;
 
-import JavaProject.Dayoung.domain.quiz.entity.Quiz;
 import JavaProject.Dayoung.domain.quiz.presentation.dto.response.QuizListResponse;
 import JavaProject.Dayoung.domain.quiz.repository.QuizRepository;
 import lombok.RequiredArgsConstructor;
@@ -12,27 +11,15 @@ import java.util.stream.Collectors;
 
 @Service
 @RequiredArgsConstructor
+@Transactional(readOnly = true)
 public class SearchQuizService {
 
     private final QuizRepository quizRepository;
 
-    @Transactional
-    public QuizListResponse searchQuiz(String title) {
-        List<QuizListResponse.QuizResponse> quizList = quizRepository.findAllByTitleContaining(title)
+    public List<QuizListResponse> searchQuiz(String title) {
+        return quizRepository.findAllByTitleContaining(title)
                 .stream()
-                .map(this::buildQuizList)
+                .map(QuizListResponse::new)
                 .collect(Collectors.toList());
-
-        return new QuizListResponse(quizList);
-    }
-
-    private QuizListResponse.QuizResponse buildQuizList(Quiz quiz) {
-        return QuizListResponse.QuizResponse.builder()
-                .quizId(quiz.getQuizId())
-                .area(quiz.getArea())
-                .level(quiz.getLevel())
-                .title(quiz.getTitle())
-                .question(quiz.getQuestion())
-                .build();
     }
 }

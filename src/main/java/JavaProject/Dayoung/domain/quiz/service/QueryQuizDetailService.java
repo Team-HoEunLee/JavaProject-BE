@@ -9,19 +9,13 @@ import org.springframework.transaction.annotation.Transactional;
 
 @Service
 @RequiredArgsConstructor
+@Transactional(readOnly = true)
 public class QueryQuizDetailService {
 
     private final QuizFacade quizFacade;
 
-    @Transactional
     public QuizDetailResponse getQuizDetail(Long quizId) {
         Quiz quiz = quizFacade.getQuiz(quizId);
-
-        return QuizDetailResponse.builder()
-                .area(quiz.getArea())
-                .title(quiz.getTitle())
-                .level(quiz.getLevel())
-                .question(quiz.getQuestion())
-                .build();
+        return new QuizDetailResponse(quiz);
     }
 }

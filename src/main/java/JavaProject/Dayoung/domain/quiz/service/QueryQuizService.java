@@ -1,6 +1,8 @@
 package JavaProject.Dayoung.domain.quiz.service;
 
-import JavaProject.Dayoung.domain.quiz.entity.Quiz;
+import JavaProject.Dayoung.domain.quiz.entity.type.Area;
+import JavaProject.Dayoung.domain.quiz.entity.type.IsSolved;
+import JavaProject.Dayoung.domain.quiz.entity.type.Level;
 import JavaProject.Dayoung.domain.quiz.presentation.dto.response.QuizListResponse;
 import JavaProject.Dayoung.domain.quiz.repository.QuizRepository;
 import lombok.RequiredArgsConstructor;
@@ -12,25 +14,15 @@ import java.util.stream.Collectors;
 
 @Service
 @RequiredArgsConstructor
+@Transactional(readOnly = true)
 public class QueryQuizService {
 
     private final QuizRepository quizRepository;
 
-    @Transactional(readOnly = true)
-    public QuizListResponse getQuizList() {
-        List<QuizListResponse.QuizResponse> quizList = quizRepository.findAllByJoinFetch()
+    public List<QuizListResponse> getQuizList(List<Area> area, List<Level> level, IsSolved isSolved) {
+        return quizRepository.findByQuizId(1L)
                 .stream()
-                .map(this::buildQuizList)
+                .map(QuizListResponse::new)
                 .collect(Collectors.toList());
-        return new QuizListResponse(quizList);
-    }
-
-    private QuizListResponse.QuizResponse buildQuizList(Quiz quiz) {
-        return QuizListResponse.QuizResponse.builder()
-                .quizId(quiz.getQuizId())
-                .title(quiz.getTitle())
-                .level(quiz.getLevel())
-                .area(quiz.getArea())
-                .build();
     }
 }

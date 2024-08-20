@@ -13,8 +13,5 @@ public interface QuizRepository extends JpaRepository<Quiz, Long> {
 
     Optional<Quiz> findByQuizId(Long quizId);
 
-    @Query("select f from Quiz f join fetch f.user order by f.level DESC ")
-    List<Quiz> findAllByJoinFetch();
-
     List<Quiz> findAllByTitleContaining(String title);
 }
