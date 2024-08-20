@@ -10,13 +10,13 @@ import lombok.Getter;
 public enum ErrorCode {
 
     //jwt
-    EXPIRED_TOKEN(403 , "Expired token"),
+    EXPIRED_TOKEN(403, "Expired token"),
     INVALID_TOKEN(403, "Invalid token"),
 
     //user
-    USER_NOT_FOUND(404,"User not found"),
-    USER_ALREADY_EXISTS(409,"User already exists"),
-    PASSWORD_MISMATCH(401,"Password mismatch"),
+    USER_NOT_FOUND(404, "User not found"),
+    USER_ALREADY_EXISTS(409, "User already exists"),
+    PASSWORD_MISMATCH(401, "Password mismatch"),
     WRITER_MISMATCH(403, "Writer mismatch"),
     ACCOUNT_ID_ALREADY_EXISTS(409, "AccountId already exists"),
 
@@ -24,7 +24,7 @@ public enum ErrorCode {
     QUIZ_NOT_FOUND(404, "Quiz not found"),
 
     //admin
-    CODE_MISMATCH(404,"Code mismatch"),
+    CODE_MISMATCH(404, "Code mismatch"),
     NOT_ADMIN(403, "Not admin"),
 
     //petition

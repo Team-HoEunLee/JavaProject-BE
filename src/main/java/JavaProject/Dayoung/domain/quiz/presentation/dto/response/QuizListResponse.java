@@ -4,14 +4,12 @@ import JavaProject.Dayoung.domain.quiz.entity.Quiz;
 import JavaProject.Dayoung.domain.quiz.entity.type.Area;
 import JavaProject.Dayoung.domain.quiz.entity.type.Level;
 import lombok.AllArgsConstructor;
-import lombok.Builder;
 import lombok.Getter;
-
-import java.util.List;
 
 @Getter
 @AllArgsConstructor
 public class QuizListResponse {
+
     private final Long quizId;
     private final String title;
     private final String question;

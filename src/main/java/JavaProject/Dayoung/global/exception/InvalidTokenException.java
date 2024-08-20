@@ -9,6 +9,5 @@ public class InvalidTokenException extends DayoungException {
 
     private InvalidTokenException() {
         super(ErrorCode.INVALID_TOKEN);
-
     }
 }
