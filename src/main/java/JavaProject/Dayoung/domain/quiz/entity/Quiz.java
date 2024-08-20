@@ -1,6 +1,7 @@
 package JavaProject.Dayoung.domain.quiz.entity;
 
 import JavaProject.Dayoung.domain.quiz.entity.type.Area;
+import JavaProject.Dayoung.domain.quiz.entity.type.IsSolved;
 import JavaProject.Dayoung.domain.quiz.entity.type.Level;
 import JavaProject.Dayoung.domain.user.entity.User;
 import lombok.AccessLevel;
@@ -37,12 +38,15 @@ public class Quiz {
     @JoinColumn(name = "user_id", nullable = false)
     private User user;
 
+    private IsSolved isSolved;
+
     @Builder
-    public Quiz(String title, String question, Level level, Area area, User user) {
+    public Quiz(String title, String question, Level level, Area area, User user, IsSolved isSolved) {
         this.title = title;
         this.question = question;
         this.level = level;
         this.area = area;
         this.user = user;
+        this.isSolved = isSolved;
     }
 }
