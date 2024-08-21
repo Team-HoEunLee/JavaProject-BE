@@ -12,6 +12,7 @@ import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
+import java.util.List;
 
 @Validated
 @RequiredArgsConstructor
@@ -35,7 +36,7 @@ public class QuizController {
     }
 
     @GetMapping("/search/{title}")
-    public QuizListResponse searchQuiz(@PathVariable("title") String title) {
+    public List<QuizListResponse> searchQuiz(@PathVariable("title") String title) {
         return searchQuizService.searchQuiz(title);
     }
 }
