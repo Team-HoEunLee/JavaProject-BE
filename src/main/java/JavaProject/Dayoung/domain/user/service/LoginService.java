@@ -3,7 +3,7 @@ package JavaProject.Dayoung.domain.user.service;
 import JavaProject.Dayoung.domain.user.entity.User;
 import JavaProject.Dayoung.domain.user.exception.PasswordMismatchException;
 import JavaProject.Dayoung.domain.user.exception.UserNotFoundException;
-import JavaProject.Dayoung.domain.user.presentation.dto.LoginRequest;
+import JavaProject.Dayoung.domain.user.presentation.dto.request.LoginRequest;
 import JavaProject.Dayoung.domain.user.repository.UserRepository;
 import JavaProject.Dayoung.global.security.TokenResponse;
 import JavaProject.Dayoung.global.security.jwt.JwtTokenProvider;

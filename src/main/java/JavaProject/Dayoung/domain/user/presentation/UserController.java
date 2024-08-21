@@ -1,10 +1,10 @@
 package JavaProject.Dayoung.domain.user.presentation;
 
-import JavaProject.Dayoung.domain.user.presentation.dto.LoginRequest;
-import JavaProject.Dayoung.domain.user.presentation.dto.SignupRequest;
-import JavaProject.Dayoung.domain.user.service.LoginService;
-import JavaProject.Dayoung.domain.user.service.ReissueService;
-import JavaProject.Dayoung.domain.user.service.SignupService;
+import JavaProject.Dayoung.domain.user.presentation.dto.request.ChangePasswordRequest;
+import JavaProject.Dayoung.domain.user.presentation.dto.request.LoginRequest;
+import JavaProject.Dayoung.domain.user.presentation.dto.request.SignupRequest;
+import JavaProject.Dayoung.domain.user.presentation.dto.request.UpdateUserInfoRequest;
+import JavaProject.Dayoung.domain.user.service.*;
 import JavaProject.Dayoung.global.security.TokenResponse;
 import lombok.RequiredArgsConstructor;
 import org.jetbrains.annotations.NotNull;
@@ -26,6 +26,8 @@ public class UserController {
     private final SignupService signupService;
     private final LoginService loginService;
     private final ReissueService reissueService;
+    private final UpdateUserInfoService updateUserInfoService;
+    private final ChangePasswordService changePasswordService;
 
     @PostMapping("/signup")
     public void signup(@RequestBody @Valid SignupRequest signupRequest) {
@@ -33,12 +35,22 @@ public class UserController {
     }
 
     @PostMapping("/login")
-    public TokenResponse login(@RequestBody @Valid LoginRequest request) {
-        return loginService.login(request);
+    public TokenResponse login(@RequestBody @Valid LoginRequest loginRequest) {
+        return loginService.login(loginRequest);
     }
 
     @PutMapping("/reissue")
     public TokenResponse reissue(@RequestHeader(name = "refresh-token") @NotNull String refreshToken) {
         return reissueService.reissue(refreshToken);
+    }
+
+    @PatchMapping("/modify/{user-id}")
+    public void modifyInfo(@RequestBody @Valid UpdateUserInfoRequest updateUserInfoRequest) {
+        updateUserInfoService.modifyInfo(updateUserInfoRequest);
+    }
+
+    @PatchMapping("/password")
+    public void changePassword(@RequestBody @Valid ChangePasswordRequest changePasswordRequest) {
+        changePasswordService.changePassword(changePasswordRequest);
     }
 }
