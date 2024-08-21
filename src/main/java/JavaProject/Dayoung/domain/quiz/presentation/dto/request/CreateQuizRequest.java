@@ -1,6 +1,5 @@
 package JavaProject.Dayoung.domain.quiz.presentation.dto.request;
 
-import JavaProject.Dayoung.domain.quiz.entity.type.Area;
 import JavaProject.Dayoung.domain.quiz.entity.type.Level;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -22,7 +21,4 @@ public class CreateQuizRequest {
 
     @NotNull(message = "난이도를 선택해주세요")
     private Level level;
-
-    @NotNull(message = "카테고리 및 분야를 선택해주세요")
-    private Area area;
 }

@@ -22,7 +22,8 @@ public class CreateQuizService {
         User user = userFacade.getCurrentUser();
 
         quizRepository.save(Quiz.builder()
-                .area(request.getArea())
+                //.area() 일단 보류
+                //.code()
                 .level(request.getLevel())
                 .question(request.getQuestion())
                 .title(request.getTitle())
