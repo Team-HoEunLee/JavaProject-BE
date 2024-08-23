@@ -4,6 +4,8 @@ import JavaProject.Dayoung.domain.user.presentation.dto.request.ChangePasswordRe
 import JavaProject.Dayoung.domain.user.presentation.dto.request.LoginRequest;
 import JavaProject.Dayoung.domain.user.presentation.dto.request.SignupRequest;
 import JavaProject.Dayoung.domain.user.presentation.dto.request.UpdateUserInfoRequest;
+import JavaProject.Dayoung.domain.user.presentation.dto.response.MyInfoResponse;
+import JavaProject.Dayoung.domain.user.presentation.dto.response.RankReponse;
 import JavaProject.Dayoung.domain.user.service.*;
 import JavaProject.Dayoung.global.security.TokenResponse;
 import lombok.RequiredArgsConstructor;
@@ -12,6 +14,7 @@ import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
+import java.util.List;
 
 @Validated
 //@Valid는 기본적으로 컨트롤러에서만 동작하며 기본적으로 다른 계층에서는 검증이 되지 않는다
@@ -28,6 +31,8 @@ public class UserController {
     private final ReissueService reissueService;
     private final UpdateUserInfoService updateUserInfoService;
     private final ChangePasswordService changePasswordService;
+    private final MyInfoService myInfoService;
+    private final GetScoreRankService getScoreRankService;
 
     @PostMapping("/signup")
     public void signup(@RequestBody @Valid SignupRequest signupRequest) {
@@ -59,4 +64,8 @@ public class UserController {
         return myInfoService.execute();
     }
 
+    @GetMapping("/rank")
+    public List<RankReponse> getScoreRank() {
+        return getScoreRankService.execute();
+    }
 }
