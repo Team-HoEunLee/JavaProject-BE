@@ -53,4 +53,10 @@ public class UserController {
     public void changePassword(@RequestBody @Valid ChangePasswordRequest changePasswordRequest) {
         changePasswordService.changePassword(changePasswordRequest);
     }
+
+    @GetMapping("/my")
+    public MyInfoResponse getMyInfo() {
+        return myInfoService.execute();
+    }
+
 }
