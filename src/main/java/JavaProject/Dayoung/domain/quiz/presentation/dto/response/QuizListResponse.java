@@ -1,7 +1,7 @@
 package JavaProject.Dayoung.domain.quiz.presentation.dto.response;
 
+import JavaProject.Dayoung.domain.area.entity.Area;
 import JavaProject.Dayoung.domain.quiz.entity.Quiz;
-import JavaProject.Dayoung.domain.quiz.entity.type.Area;
 import JavaProject.Dayoung.domain.quiz.entity.type.Level;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -17,7 +17,7 @@ public class QuizListResponse {
     private final Level level;
 
     public QuizListResponse(Quiz quiz) {
-        this.quizId = quiz.getQuizId();
+        this.quizId = quiz.getId();
         this.title = quiz.getTitle();
         this.question = quiz.getQuestion();
         this.area = quiz.getArea();

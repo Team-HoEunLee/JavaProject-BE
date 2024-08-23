@@ -48,7 +48,8 @@ public class Quiz {
     private Area area;
 
     @Builder
-    public Quiz(String title, String question, Level level, Area area, Code code, User user, IsSolved isSolved) {
+    public Quiz(Long id, String title, String question, Level level, Area area, Code code, User user, IsSolved isSolved) {
+        this.id = id;
         this.title = title;
         this.question = question;
         this.level = level;
