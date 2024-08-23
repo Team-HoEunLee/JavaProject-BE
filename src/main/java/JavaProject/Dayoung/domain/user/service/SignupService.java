@@ -28,11 +28,15 @@ public class SignupService {
 
         userRepository.save(
                 User.builder()
-                        .accountId(signupRequest.getAccountId())
-                        .email(signupRequest.getEmail())
-                        .password(password)
-                        .role(Role.STUDENT)
-                        .build()
+                    .accountId(signupRequest.getAccountId())
+                    .email(signupRequest.getEmail())
+                    .password(password)
+                    .name(signupRequest.getName())
+                    .introduction(signupRequest.getIntroduction())
+                    .major(signupRequest.getMajor())
+                    .role(Role.STUDENT)
+                    .score(0)
+            .build()
         );
     }
 }

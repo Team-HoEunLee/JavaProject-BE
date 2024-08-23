@@ -41,8 +41,10 @@ public class User {
     @Column(nullable = false)
     private Role role;
 
+    private Integer score;
+
     @Builder
-    public User(Long id, String accountId, String email, String password, String name, String introduction, Major major, Role role) {
+    public User(Long id, String accountId, String email, String password, String name, String introduction, Major major, Role role, Integer score) {
         this.id = id;
         this.accountId = accountId;
         this.email = email;
@@ -51,6 +53,7 @@ public class User {
         this.introduction = introduction;
         this.major = major;
         this.role = role;
+        this.score = score;
     }
 
     public void modifyInfo(String accountId, String name, Major major) {

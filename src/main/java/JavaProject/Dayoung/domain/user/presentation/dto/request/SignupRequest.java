@@ -4,6 +4,7 @@ import JavaProject.Dayoung.domain.user.entity.type.Major;
 import lombok.AccessLevel;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
+import reactor.util.annotation.Nullable;
 
 import javax.validation.constraints.NotNull;
 
@@ -23,7 +24,9 @@ public class SignupRequest {
     @NotNull(message = "닉네임을 입력하세요")
     private String name;
 
+    @Nullable
     private String introduction;
 
+    @Nullable
     private Major major;
 }
