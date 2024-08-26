@@ -9,11 +9,11 @@ import JavaProject.Dayoung.domain.user.presentation.dto.response.RankReponse;
 import JavaProject.Dayoung.domain.user.service.*;
 import JavaProject.Dayoung.global.security.TokenResponse;
 import lombok.RequiredArgsConstructor;
-import org.jetbrains.annotations.NotNull;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
+import javax.validation.constraints.NotNull;
 import java.util.List;
 
 @Validated
