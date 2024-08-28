@@ -11,7 +11,7 @@ import org.springframework.web.bind.annotation.RestController;
 import javax.validation.Valid;
 
 @RequiredArgsConstructor
-@RequestMapping("/code")
+@RequestMapping("/codes")
 @RestController
 public class CodeController {
 

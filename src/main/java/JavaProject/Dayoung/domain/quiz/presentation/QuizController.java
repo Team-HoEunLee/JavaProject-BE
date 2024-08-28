@@ -14,7 +14,7 @@ import javax.validation.Valid;
 import java.util.List;
 
 @RequiredArgsConstructor
-@RequestMapping("/quiz")
+@RequestMapping("/quizes")
 @RestController
 public class QuizController {
 
