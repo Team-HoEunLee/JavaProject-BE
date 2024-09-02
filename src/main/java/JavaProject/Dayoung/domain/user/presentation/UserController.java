@@ -33,6 +33,7 @@ public class UserController {
     private final ChangePasswordService changePasswordService;
     private final MyInfoService myInfoService;
     private final GetScoreRankService getScoreRankService;
+    private final LogoutService logoutService;
 
     @PostMapping("/signup")
     public void signup(@RequestBody @Valid SignupRequest signupRequest) {
@@ -72,5 +73,10 @@ public class UserController {
     @GetMapping("/rank")
     public List<RankReponse> getScoreRank() {
         return getScoreRankService.execute();
+    }
+
+    @DeleteMapping("/logout")
+    public void deleteUser() {
+        logoutService.logoutUser();
     }
 }
