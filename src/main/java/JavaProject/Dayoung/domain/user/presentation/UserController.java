@@ -49,6 +49,11 @@ public class UserController {
         return reissueService.reissue(refreshToken);
     }
 
+    @GetMapping("/info")
+    public MyInfoResponse getExecute() {
+        return myInfoService.execute();
+    }
+
     @PatchMapping("/modify/{user-id}")
     public void modifyInfo(@RequestBody @Valid UpdateUserInfoRequest updateUserInfoRequest) {
         updateUserInfoService.modifyInfo(updateUserInfoRequest);
