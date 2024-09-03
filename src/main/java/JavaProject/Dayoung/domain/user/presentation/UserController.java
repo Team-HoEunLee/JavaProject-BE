@@ -56,7 +56,7 @@ public class UserController {
     }
 
     @PatchMapping("/modify/{user-id}")
-    public void modifyInfo(@RequestBody @Valid UpdateUserInfoRequest updateUserInfoRequest) {
+    public void modifyInfo(@RequestBody @Valid UpdateUserInfoRequest updateUserInfoRequest, @PathVariable("user-id") String parameter) {
         updateUserInfoService.modifyInfo(updateUserInfoRequest);
     }
 

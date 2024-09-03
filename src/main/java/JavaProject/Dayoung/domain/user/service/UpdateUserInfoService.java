@@ -17,8 +17,9 @@ public class UpdateUserInfoService {
     public void modifyInfo(UpdateUserInfoRequest updateUserInfoRequest) {
         User user = userFacade.getCurrentUser();
 
-        user.modifyInfo(updateUserInfoRequest.getName(),
-                updateUserInfoRequest.getAccountId(),
-                updateUserInfoRequest.getMajor());
+        user.modifyInfo(updateUserInfoRequest.getAccountId(),
+                updateUserInfoRequest.getName(),
+                updateUserInfoRequest.getMajor(),
+                updateUserInfoRequest.getIntroduction());
     }
 }

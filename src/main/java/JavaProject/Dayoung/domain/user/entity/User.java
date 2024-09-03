@@ -24,7 +24,7 @@ public class User {
     @Column(columnDefinition = "varchar(30)", nullable = false)
     private String email;
 
-    @Column(columnDefinition = "varchar(80)", nullable = false)
+    @Column(columnDefinition = "varchar(100)", nullable = false)
     private String password;
 
     @Column(columnDefinition = "varchar(30)", nullable = false)
@@ -56,10 +56,11 @@ public class User {
         this.score = score;
     }
 
-    public void modifyInfo(String accountId, String name, Major major) {
+    public void modifyInfo(String accountId, String name, Major major, String introduction) {
         this.accountId = accountId;
         this.name = name;
         this.major = major;
+        this.introduction = introduction;
     }
 
     public void changePassword(String password) {
