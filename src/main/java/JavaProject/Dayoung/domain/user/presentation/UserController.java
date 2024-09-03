@@ -75,7 +75,7 @@ public class UserController {
         return getScoreRankService.execute();
     }
 
-    @DeleteMapping("/logout")
+    @DeleteMapping("/delete")
     public void deleteUser() {
         logoutService.logoutUser();
     }
