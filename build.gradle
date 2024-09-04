@@ -25,6 +25,9 @@ repositories {
 
 dependencies {
 
+	//openai
+	implementation 'io.github.flashvayne:chatgpt-spring-boot-starter:1.0.4'
+
 	//queryDSL
 	implementation 'com.querydsl:querydsl-jpa'
 	annotationProcessor(
