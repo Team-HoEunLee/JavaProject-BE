@@ -11,6 +11,7 @@ import JavaProject.Dayoung.domain.quiz.service.CreateQuizService;
 import JavaProject.Dayoung.domain.quiz.service.QueryCategoryService;
 import JavaProject.Dayoung.domain.quiz.service.QueryQuizDetailService;
 import JavaProject.Dayoung.domain.quiz.service.QueryQuizService;
+import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.*;
@@ -30,16 +31,19 @@ public class QuizController {
     private final QueryCategoryService queryCategoryService;
 
     @PostMapping
+    @Operation(summary = "문제 생성", description = "어드민이 문제를 등록할 때 사용하는 API")
     public void createQuiz(@RequestBody @Valid CreateQuizRequest createQuizRequest) {
         createQuizService.createQuiz(createQuizRequest);
     }
 
     @GetMapping("/{quiz-id}")
+    @Operation(summary = "문제 정보 상세 조회", description = "문제 정보 상세 조회 할 때 사용하는 API")
     public QuizDetailResponse getQuizDetail(@PathVariable("quiz-id") Long quizId) {
         return queryQuizDetailService.getQuizDetail(quizId);
     }
 
     @GetMapping("/list")
+    @Operation(summary = "문제 리스트 조회", description = "카테고리를 사용해 문제리스트를 조회")
     public List<QuizListResponse> getQuizList(
         @RequestParam(value = "title") String title,
         @RequestParam(value = "area") List<Area> area,
@@ -50,6 +54,7 @@ public class QuizController {
     }
 
     @GetMapping("/category")
+    @Operation(summary = "카테고리 조회", description = "문제 리스트 조회에 필요한 area, code를 조회하는 api")
     public CategoryListResponse getQuizList() {
         return queryCategoryService.getCategory();
     }

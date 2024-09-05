@@ -50,7 +50,7 @@ public class UserController {
     }
 
     @PutMapping("/reissue")
-    @Operation(summary = "유저 토큰 발급", description = "토큰 발급 할 때 사용하는 API")
+    @Operation(summary = "유저 토큰 재발급", description = "토큰 재발급 할 때 사용하는 API")
     public TokenResponse reissue(@RequestHeader(name = "refresh-token") @NotNull String refreshToken) {
         return reissueService.reissue(refreshToken);
     }
