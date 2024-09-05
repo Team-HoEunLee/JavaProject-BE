@@ -9,7 +9,6 @@ import JavaProject.Dayoung.domain.quiz.presentation.dto.response.QuizListRespons
 import JavaProject.Dayoung.domain.quiz.service.CreateQuizService;
 import JavaProject.Dayoung.domain.quiz.service.QueryQuizDetailService;
 import JavaProject.Dayoung.domain.quiz.service.QueryQuizService;
-import JavaProject.Dayoung.domain.quiz.service.SearchQuizService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.*;
 
@@ -23,7 +22,6 @@ public class QuizController {
 
     private final CreateQuizService createQuizService;
     private final QueryQuizDetailService queryQuizDetailService;
-    private final SearchQuizService searchQuizService;
     private final QueryQuizService queryQuizService;
 
     @PostMapping
@@ -36,17 +34,13 @@ public class QuizController {
         return queryQuizDetailService.getQuizDetail(quizId);
     }
 
-    @GetMapping
+    @GetMapping("/list")
     public List<QuizListResponse> getQuizList(
+        @RequestParam(value = "title") String title,
         @RequestParam(value = "area") List<Area> area,
         @RequestParam(value = "level") List<Level> level,
         @RequestParam(value = "is_solved") IsSolved isSolved
     ) {
-        return queryQuizService.getQuizList(area, level, isSolved);
-    }
-
-    @GetMapping("/search/{title}")
-    public List<QuizListResponse> searchQuiz(@PathVariable("title") String title) {
-        return searchQuizService.searchQuiz(title);
+        return queryQuizService.getQuizList(title, area, level, isSolved);
     }
 }
