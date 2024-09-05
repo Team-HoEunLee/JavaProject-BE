@@ -16,7 +16,6 @@ import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
 import javax.validation.constraints.NotNull;
-import java.util.List;
 
 @Validated
 //@Valid는 기본적으로 컨트롤러에서만 동작하며 기본적으로 다른 계층에서는 검증이 되지 않는다
@@ -45,41 +44,42 @@ public class UserController {
     }
 
     @PostMapping("/login")
+    @Operation(summary = "유저 로그인", description = "로그인 할 때 사용하는 API")
     public TokenResponse login(@RequestBody @Valid LoginRequest loginRequest) {
         return loginService.login(loginRequest);
     }
 
     @PutMapping("/reissue")
+    @Operation(summary = "유저 토큰 발급", description = "토큰 발급 할 때 사용하는 API")
     public TokenResponse reissue(@RequestHeader(name = "refresh-token") @NotNull String refreshToken) {
         return reissueService.reissue(refreshToken);
     }
 
     @GetMapping("/info")
+    @Operation(summary = "유저 정보 조회", description = "유저 정보 조회 할 때 사용하는 API")
     public MyInfoResponse getExecute() {
         return myInfoService.execute();
     }
 
     @PatchMapping("/modify/{user-id}")
+    @Operation(summary = "유저 정보 수정", description = "유저 정보 수정 할 때 사용하는 API")
     public void modifyInfo(@RequestBody @Valid UpdateUserInfoRequest updateUserInfoRequest, @PathVariable("user-id") String parameter) {
         updateUserInfoService.modifyInfo(updateUserInfoRequest);
     }
 
     @PatchMapping("/password")
+    @Operation(summary = "유저 비밀번호 변경", description = "유저 비밀번호 변경 할 때 사용하는 API")
     public void changePassword(@RequestBody @Valid ChangePasswordRequest changePasswordRequest) {
         changePasswordService.changePassword(changePasswordRequest);
     }
 
-    @GetMapping("/my")
-    public MyInfoResponse getMyInfo() {
-        return myInfoService.execute();
-    }
-
     @GetMapping("/rank")
+    @Operation(summary = "유저 랭킹", description = "유저 랭킹 해주는 사용하는 API")
     public RankListResponse getScoreRank() {
         return getScoreRankService.execute();
     }
 
-    @DeleteMapping("/delete")
+    @DeleteMapping
     @Operation(summary = "회원 탈퇴", description = "회원 탈퇴할 때 사용하는 API")
     public void deleteUser() {
         logoutService.logoutUser();
