@@ -33,7 +33,7 @@ public class QuizController {
         return queryQuizDetailService.getQuizDetail(quizId);
     }
 
-    @GetMapping("/{list}")
+    @GetMapping
     public List<QuizListResponse> getQuizList() {
         return queryQuizService.getQuizList();
     }
