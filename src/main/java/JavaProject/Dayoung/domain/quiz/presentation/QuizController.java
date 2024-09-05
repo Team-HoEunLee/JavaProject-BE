@@ -11,6 +11,7 @@ import JavaProject.Dayoung.domain.quiz.service.CreateQuizService;
 import JavaProject.Dayoung.domain.quiz.service.QueryCategoryService;
 import JavaProject.Dayoung.domain.quiz.service.QueryQuizDetailService;
 import JavaProject.Dayoung.domain.quiz.service.QueryQuizService;
+import io.swagger.v3.oas.annotations.tags.Tag;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.*;
 
@@ -18,7 +19,8 @@ import javax.validation.Valid;
 import java.util.List;
 
 @RequiredArgsConstructor
-@RequestMapping("/quizes")
+@Tag(name = "문제", description = "문제 엔티티입니다")
+@RequestMapping("/quizzes")
 @RestController
 public class QuizController {
 

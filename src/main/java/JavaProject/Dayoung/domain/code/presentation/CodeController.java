@@ -2,6 +2,7 @@ package JavaProject.Dayoung.domain.code.presentation;
 
 import JavaProject.Dayoung.domain.code.presentation.dto.request.CreateCodeRequest;
 import JavaProject.Dayoung.domain.code.service.CreateCodeService;
+import io.swagger.v3.oas.annotations.tags.Tag;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -11,6 +12,7 @@ import org.springframework.web.bind.annotation.RestController;
 import javax.validation.Valid;
 
 @RequiredArgsConstructor
+@Tag(name = "기술 스택", description = "기술 스택 도메인")
 @RequestMapping("/codes")
 @RestController
 public class CodeController {

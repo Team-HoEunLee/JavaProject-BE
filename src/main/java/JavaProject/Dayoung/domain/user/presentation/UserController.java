@@ -8,6 +8,8 @@ import JavaProject.Dayoung.domain.user.presentation.dto.response.MyInfoResponse;
 import JavaProject.Dayoung.domain.user.presentation.dto.response.RankListResponse;
 import JavaProject.Dayoung.domain.user.service.*;
 import JavaProject.Dayoung.global.security.TokenResponse;
+import io.swagger.v3.oas.annotations.Operation;
+import io.swagger.v3.oas.annotations.tags.Tag;
 import lombok.RequiredArgsConstructor;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
@@ -21,6 +23,7 @@ import java.util.List;
 //[@Validated]
 //입력 파라미터의 유효성 검증은 컨트롤러에서 최대한 처리하고 넘겨주는 것이 좋다.
 //하지만 개발을 하다보면 불가피하게 다른 곳에서 파라미터를 검증해야 할 수 있다.
+@Tag(name = "유저", description = "유저 엔티티입니다")
 @RestController
 @RequiredArgsConstructor
 @RequestMapping("/users")
@@ -36,6 +39,7 @@ public class UserController {
     private final LogoutService logoutService;
 
     @PostMapping("/signup")
+    @Operation(summary = "유저 회원가입", description = "회원가입 할 때 사용하는 API")
     public void signup(@RequestBody @Valid SignupRequest signupRequest) {
         signupService.signUp(signupRequest);
     }
@@ -76,6 +80,7 @@ public class UserController {
     }
 
     @DeleteMapping("/delete")
+    @Operation(summary = "회원 탈퇴", description = "회원 탈퇴할 때 사용하는 API")
     public void deleteUser() {
         logoutService.logoutUser();
     }
