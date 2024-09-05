@@ -4,9 +4,11 @@ import JavaProject.Dayoung.domain.area.entity.Area;
 import JavaProject.Dayoung.domain.quiz.entity.type.IsSolved;
 import JavaProject.Dayoung.domain.quiz.entity.type.Level;
 import JavaProject.Dayoung.domain.quiz.presentation.dto.request.CreateQuizRequest;
+import JavaProject.Dayoung.domain.quiz.presentation.dto.response.CategoryListResponse;
 import JavaProject.Dayoung.domain.quiz.presentation.dto.response.QuizDetailResponse;
 import JavaProject.Dayoung.domain.quiz.presentation.dto.response.QuizListResponse;
 import JavaProject.Dayoung.domain.quiz.service.CreateQuizService;
+import JavaProject.Dayoung.domain.quiz.service.QueryCategoryService;
 import JavaProject.Dayoung.domain.quiz.service.QueryQuizDetailService;
 import JavaProject.Dayoung.domain.quiz.service.QueryQuizService;
 import lombok.RequiredArgsConstructor;
@@ -23,6 +25,7 @@ public class QuizController {
     private final CreateQuizService createQuizService;
     private final QueryQuizDetailService queryQuizDetailService;
     private final QueryQuizService queryQuizService;
+    private final QueryCategoryService queryCategoryService;
 
     @PostMapping
     public void createQuiz(@RequestBody @Valid CreateQuizRequest createQuizRequest) {
@@ -42,5 +45,10 @@ public class QuizController {
         @RequestParam(value = "is_solved") IsSolved isSolved
     ) {
         return queryQuizService.getQuizList(title, area, level, isSolved);
+    }
+
+    @GetMapping("/category")
+    public CategoryListResponse getQuizList() {
+        return queryCategoryService.getCategory();
     }
 }
