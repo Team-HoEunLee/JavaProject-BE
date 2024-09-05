@@ -19,9 +19,9 @@ public class QueryQuizService {
 
     private final QuizRepository quizRepository;
 
-    public List<QuizListResponse> getQuizList(List<Area> area, List<Level> level, IsSolved isSolved) {
+    public List<QuizListResponse> getQuizList(String title, List<Area> area, List<Level> level, IsSolved isSolved) {
 
-        return quizRepository.findAllByAreaInAndLevelInAndIsSolved(area, level, isSolved)
+        return quizRepository.findAllByTitleContainingAndAreaInAndLevelInAndIsSolved(title, area, level, isSolved)
             .stream()
             .map(QuizListResponse::new)
             .collect(Collectors.toList());
