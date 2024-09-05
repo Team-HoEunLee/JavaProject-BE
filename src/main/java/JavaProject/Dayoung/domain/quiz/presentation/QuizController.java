@@ -1,5 +1,8 @@
 package JavaProject.Dayoung.domain.quiz.presentation;
 
+import JavaProject.Dayoung.domain.area.entity.Area;
+import JavaProject.Dayoung.domain.quiz.entity.type.IsSolved;
+import JavaProject.Dayoung.domain.quiz.entity.type.Level;
 import JavaProject.Dayoung.domain.quiz.presentation.dto.request.CreateQuizRequest;
 import JavaProject.Dayoung.domain.quiz.presentation.dto.response.QuizDetailResponse;
 import JavaProject.Dayoung.domain.quiz.presentation.dto.response.QuizListResponse;
@@ -34,8 +37,12 @@ public class QuizController {
     }
 
     @GetMapping
-    public List<QuizListResponse> getQuizList() {
-        return queryQuizService.getQuizList();
+    public List<QuizListResponse> getQuizList(
+        @RequestParam(value = "area") List<Area> area,
+        @RequestParam(value = "level") List<Level> level,
+        @RequestParam(value = "is_solved") IsSolved isSolved
+    ) {
+        return queryQuizService.getQuizList(area, level, isSolved);
     }
 
     @GetMapping("/search/{title}")
