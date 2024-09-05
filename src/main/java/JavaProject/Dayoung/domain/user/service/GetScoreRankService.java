@@ -1,8 +1,8 @@
 package JavaProject.Dayoung.domain.user.service;
 
-import JavaProject.Dayoung.domain.quiz.repository.QuizRepository;
 import JavaProject.Dayoung.domain.user.entity.User;
-import JavaProject.Dayoung.domain.user.presentation.dto.response.RankReponse;
+import JavaProject.Dayoung.domain.user.facade.UserFacade;
+import JavaProject.Dayoung.domain.user.presentation.dto.response.RankListResponse;
 import JavaProject.Dayoung.domain.user.repository.UserRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
@@ -17,11 +17,18 @@ import java.util.stream.Collectors;
 public class GetScoreRankService {
 
     private final UserRepository userRepository;
+    private final UserFacade userFacade;
 
-    public List<RankReponse> execute() {
-        return userRepository.findTop10ByOrderByScoreDesc()
+    public RankListResponse execute() {
+        List<User> user =  userRepository.findTop10ByOrderByScoreDesc();
+
+        User currentUser = userFacade.getCurrentUser();
+
+        List<RankListResponse.RankResponse> rankListResponses = userRepository.findTop10ByOrderByScoreDesc()
             .stream()
-            .map(RankReponse::new)
+            .map(RankListResponse.RankResponse::of)
             .collect(Collectors.toList());
+
+        return new RankListResponse(rankListResponses, currentUser.getName(), currentUser.getScore());
     }
 }

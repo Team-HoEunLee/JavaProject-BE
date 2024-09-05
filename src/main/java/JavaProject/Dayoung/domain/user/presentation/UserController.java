@@ -5,7 +5,7 @@ import JavaProject.Dayoung.domain.user.presentation.dto.request.LoginRequest;
 import JavaProject.Dayoung.domain.user.presentation.dto.request.SignupRequest;
 import JavaProject.Dayoung.domain.user.presentation.dto.request.UpdateUserInfoRequest;
 import JavaProject.Dayoung.domain.user.presentation.dto.response.MyInfoResponse;
-import JavaProject.Dayoung.domain.user.presentation.dto.response.RankReponse;
+import JavaProject.Dayoung.domain.user.presentation.dto.response.RankListResponse;
 import JavaProject.Dayoung.domain.user.service.*;
 import JavaProject.Dayoung.global.security.TokenResponse;
 import lombok.RequiredArgsConstructor;
@@ -71,7 +71,7 @@ public class UserController {
     }
 
     @GetMapping("/rank")
-    public List<RankReponse> getScoreRank() {
+    public RankListResponse getScoreRank() {
         return getScoreRankService.execute();
     }
 
