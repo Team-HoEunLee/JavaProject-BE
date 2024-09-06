@@ -11,12 +11,12 @@ import org.springframework.transaction.annotation.Transactional;
 
 @Service
 @RequiredArgsConstructor
+@Transactional
 public class ChangePasswordService {
 
     private final UserFacade userFacade;
     private final PasswordEncoder passwordEncoder;
 
-    @Transactional
     public void execute(ChangePasswordRequest changePasswordRequest) {
         User user = userFacade.getCurrentUser();
 

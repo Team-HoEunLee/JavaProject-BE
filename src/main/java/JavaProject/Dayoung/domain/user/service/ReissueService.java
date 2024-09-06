@@ -8,11 +8,11 @@ import org.springframework.transaction.annotation.Transactional;
 
 @Service
 @RequiredArgsConstructor
+@Transactional
 public class ReissueService {
 
     private final JwtReissueUtil jwtReissueUtil;
 
-    @Transactional
     public TokenResponse execute(String refreshToken) {
         return jwtReissueUtil.reissue(refreshToken);
     }

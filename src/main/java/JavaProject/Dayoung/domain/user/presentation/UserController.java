@@ -36,7 +36,7 @@ public class UserController {
     private final ChangePasswordService changePasswordService;
     private final MyInfoService myInfoService;
     private final GetScoreRankService getScoreRankService;
-    private final LogoutService logoutService;
+    private final WithdrawalService withdrawalService;
 
     @PostMapping("/signup")
     @Operation(summary = "유저 회원가입", description = "회원가입 할 때 사용하는 API")
@@ -82,7 +82,7 @@ public class UserController {
 
     @DeleteMapping
     @Operation(summary = "회원 탈퇴", description = "회원 탈퇴할 때 사용하는 API")
-    public void deleteUser() {
-        logoutService.execute();
+    public void WithdrawalUser() {
+        withdrawalService.execute();
     }
 }

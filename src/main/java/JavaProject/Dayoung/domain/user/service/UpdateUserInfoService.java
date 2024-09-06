@@ -9,11 +9,11 @@ import org.springframework.transaction.annotation.Transactional;
 
 @Service
 @RequiredArgsConstructor
+@Transactional
 public class UpdateUserInfoService {
 
     private final UserFacade userFacade;
 
-    @Transactional
     public void execute(UpdateUserInfoRequest updateUserInfoRequest) {
         User user = userFacade.getCurrentUser();
 

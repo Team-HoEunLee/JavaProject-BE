@@ -9,15 +9,14 @@ import org.springframework.transaction.annotation.Transactional;
 
 @RequiredArgsConstructor
 @Service
-public class LogoutService {
+@Transactional
+public class WithdrawalService {
 
     private final UserRepository userRepository;
     private final UserFacade userFacade;
 
-    @Transactional
     public void execute() {
         User user = userFacade.getCurrentUser();
-
         userRepository.delete(user);
     }
 }
