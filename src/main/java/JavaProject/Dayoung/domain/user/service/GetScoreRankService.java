@@ -9,6 +9,7 @@ import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.util.Arrays;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -25,13 +26,13 @@ public class GetScoreRankService {
 
         User currentUser = userFacade.getCurrentUser();
 
-        int myRanking = List.of(allUsers).indexOf(currentUser);
+        int myRank = allUsers.indexOf(currentUser);
 
         List<RankListResponse.RankResponse> rankListResponses = userRepository.findTop10ByOrderByScoreDesc()
             .stream()
             .map(RankListResponse.RankResponse::of)
             .collect(Collectors.toList());
 
-        return new RankListResponse(rankListResponses, currentUser.getName(), currentUser.getScore(), myRanking);
+        return new RankListResponse(rankListResponses, currentUser.getName(), currentUser.getScore(), myRank+1);
     }
 }
