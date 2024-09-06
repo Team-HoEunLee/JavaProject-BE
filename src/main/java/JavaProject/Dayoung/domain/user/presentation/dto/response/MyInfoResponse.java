@@ -17,4 +17,6 @@ public class MyInfoResponse {
     private String introduction;
 
     private Major major;
+
+    private int myRank;
 }
