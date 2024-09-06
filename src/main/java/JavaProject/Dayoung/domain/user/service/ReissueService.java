@@ -13,7 +13,7 @@ public class ReissueService {
     private final JwtReissueUtil jwtReissueUtil;
 
     @Transactional
-    public TokenResponse reissue(String refreshToken) {
+    public TokenResponse execute(String refreshToken) {
         return jwtReissueUtil.reissue(refreshToken);
     }
 }

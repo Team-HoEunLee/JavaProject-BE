@@ -17,7 +17,7 @@ public class ChangePasswordService {
     private final PasswordEncoder passwordEncoder;
 
     @Transactional
-    public void changePassword(ChangePasswordRequest changePasswordRequest) {
+    public void execute(ChangePasswordRequest changePasswordRequest) {
         User user = userFacade.getCurrentUser();
 
         if (!passwordEncoder.matches(changePasswordRequest.getOldPassword(), user.getPassword())) {

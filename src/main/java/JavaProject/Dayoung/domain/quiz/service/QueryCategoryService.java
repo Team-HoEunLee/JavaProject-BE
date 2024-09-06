@@ -19,7 +19,7 @@ public class QueryCategoryService {
     private final CodeRepository codeRepository;
     private final AreaRepository areaRepository;
 
-    public CategoryListResponse getCategory() {
+    public CategoryListResponse execute() {
 
         List<Code> codes = codeRepository.findAll();
         List<Area> areas = areaRepository.findAll();

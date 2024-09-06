@@ -14,7 +14,7 @@ public class UpdateUserInfoService {
     private final UserFacade userFacade;
 
     @Transactional
-    public void modifyInfo(UpdateUserInfoRequest updateUserInfoRequest) {
+    public void execute(UpdateUserInfoRequest updateUserInfoRequest) {
         User user = userFacade.getCurrentUser();
 
         user.modifyInfo(updateUserInfoRequest.getAccountId(),

@@ -18,7 +18,7 @@ public class CreateQuizService {
     private final QuizRepository quizRepository;
     private final UserFacade userFacade;
 
-    public void createQuiz(CreateQuizRequest request) {
+    public void execute(CreateQuizRequest request) {
         User user = userFacade.getCurrentUser();
 
         quizRepository.save(Quiz.builder()

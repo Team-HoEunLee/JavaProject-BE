@@ -15,7 +15,7 @@ public class LogoutService {
     private final UserFacade userFacade;
 
     @Transactional
-    public void logoutUser() {
+    public void execute() {
         User user = userFacade.getCurrentUser();
 
         userRepository.delete(user);

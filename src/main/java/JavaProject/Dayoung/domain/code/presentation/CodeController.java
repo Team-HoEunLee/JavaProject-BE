@@ -22,7 +22,7 @@ public class CodeController {
 
     @PostMapping
     @Operation(summary = "기술 스택 생성", description = "기술스택을 어드민이 추가하는 API")
-    public void createCode(@RequestBody @Valid CreateCodeRequest createQuizRequest) {
-        createCodeService.execute(createQuizRequest);
+    public void createCode(@RequestBody @Valid CreateCodeRequest request) {
+        createCodeService.execute(request);
     }
 }

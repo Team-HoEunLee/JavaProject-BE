@@ -21,7 +21,7 @@ public class SignupService {
     private final JwtTokenProvider jwtTokenProvider;
 
     @Transactional
-    public TokenResponse signUp(SignupRequest signupRequest) {
+    public TokenResponse execute(SignupRequest signupRequest) {
 
         if (userRepository.existsByAccountId(signupRequest.getAccountId())) {
             throw UserAlreadyExistException.EXCEPTION;

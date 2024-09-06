@@ -40,20 +40,20 @@ public class UserController {
 
     @PostMapping("/signup")
     @Operation(summary = "유저 회원가입", description = "회원가입 할 때 사용하는 API")
-    public TokenResponse signup(@RequestBody @Valid SignupRequest signupRequest) {
-        return signupService.signUp(signupRequest);
+    public TokenResponse signup(@RequestBody @Valid SignupRequest request) {
+        return signupService.execute(request);
     }
 
     @PostMapping("/login")
     @Operation(summary = "유저 로그인", description = "로그인 할 때 사용하는 API")
-    public TokenResponse login(@RequestBody @Valid LoginRequest loginRequest) {
-        return loginService.login(loginRequest);
+    public TokenResponse login(@RequestBody @Valid LoginRequest request) {
+        return loginService.execute(request);
     }
 
     @PutMapping("/reissue")
     @Operation(summary = "유저 토큰 재발급", description = "토큰 재발급 할 때 사용하는 API")
     public TokenResponse reissue(@RequestHeader(name = "refresh-token") @NotNull String refreshToken) {
-        return reissueService.reissue(refreshToken);
+        return reissueService.execute(refreshToken);
     }
 
     @GetMapping("/info")
@@ -64,14 +64,14 @@ public class UserController {
 
     @PatchMapping("/{user-id}")
     @Operation(summary = "유저 정보 수정", description = "유저 정보 수정 할 때 사용하는 API")
-    public void modifyInfo(@RequestBody @Valid UpdateUserInfoRequest updateUserInfoRequest, @PathVariable("user-id") String parameter) {
-        updateUserInfoService.modifyInfo(updateUserInfoRequest);
+    public void modifyInfo(@RequestBody @Valid UpdateUserInfoRequest request, @PathVariable("user-id") String parameter) {
+        updateUserInfoService.execute(request);
     }
 
     @PatchMapping("/password")
     @Operation(summary = "유저 비밀번호 변경", description = "유저 비밀번호 변경 할 때 사용하는 API")
-    public void changePassword(@RequestBody @Valid ChangePasswordRequest changePasswordRequest) {
-        changePasswordService.changePassword(changePasswordRequest);
+    public void changePassword(@RequestBody @Valid ChangePasswordRequest request) {
+        changePasswordService.execute(request);
     }
 
     @GetMapping("/rank")
@@ -83,6 +83,6 @@ public class UserController {
     @DeleteMapping
     @Operation(summary = "회원 탈퇴", description = "회원 탈퇴할 때 사용하는 API")
     public void deleteUser() {
-        logoutService.logoutUser();
+        logoutService.execute();
     }
 }

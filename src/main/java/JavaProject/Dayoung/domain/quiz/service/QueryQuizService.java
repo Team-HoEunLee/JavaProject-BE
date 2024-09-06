@@ -19,7 +19,7 @@ public class QueryQuizService {
 
     private final QuizRepository quizRepository;
 
-    public List<QuizListResponse> getQuizList(String title, List<Area> area, List<Level> level, IsSolved isSolved) {
+    public List<QuizListResponse> execute(String title, List<Area> area, List<Level> level, IsSolved isSolved) {
 
         return quizRepository.findAllByTitleContainingAndAreaInAndLevelInAndIsSolved(title, area, level, isSolved)
             .stream()

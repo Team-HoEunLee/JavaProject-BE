@@ -32,14 +32,14 @@ public class QuizController {
 
     @PostMapping
     @Operation(summary = "문제 생성", description = "어드민이 문제를 등록할 때 사용하는 API")
-    public void createQuiz(@RequestBody @Valid CreateQuizRequest createQuizRequest) {
-        createQuizService.createQuiz(createQuizRequest);
+    public void createQuiz(@RequestBody @Valid CreateQuizRequest request) {
+        createQuizService.execute(request);
     }
 
     @GetMapping("/{quiz-id}")
     @Operation(summary = "문제 정보 상세 조회", description = "문제 정보 상세 조회 할 때 사용하는 API")
     public QuizDetailResponse getQuizDetail(@PathVariable("quiz-id") Long quizId) {
-        return queryQuizDetailService.getQuizDetail(quizId);
+        return queryQuizDetailService.execute(quizId);
     }
 
     @GetMapping("/list")
@@ -50,12 +50,12 @@ public class QuizController {
         @RequestParam(value = "level") List<Level> level,
         @RequestParam(value = "is_solved") IsSolved isSolved
     ) {
-        return queryQuizService.getQuizList(title, area, level, isSolved);
+        return queryQuizService.execute(title, area, level, isSolved);
     }
 
     @GetMapping("/category")
     @Operation(summary = "카테고리 조회", description = "문제 리스트 조회에 필요한 area, code를 조회하는 api")
     public CategoryListResponse getQuizList() {
-        return queryCategoryService.getCategory();
+        return queryCategoryService.execute();
     }
 }
