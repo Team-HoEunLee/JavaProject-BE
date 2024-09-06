@@ -62,9 +62,9 @@ public class UserController {
         return myInfoService.execute();
     }
 
-    @PatchMapping("/{user-id}")
+    @PatchMapping
     @Operation(summary = "유저 정보 수정", description = "유저 정보 수정 할 때 사용하는 API")
-    public void modifyInfo(@RequestBody @Valid UpdateUserInfoRequest request, @PathVariable("user-id") String parameter) {
+    public void modifyInfo(@RequestBody @Valid UpdateUserInfoRequest request) {
         updateUserInfoService.execute(request);
     }
 
