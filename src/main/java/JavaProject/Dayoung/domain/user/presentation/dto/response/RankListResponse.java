@@ -17,6 +17,7 @@ public class RankListResponse {
 
     private String myName;
     private Integer myScore;
+    private Integer myRanking;
 
     @Getter
     @NoArgsConstructor

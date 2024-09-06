@@ -5,6 +5,7 @@ import JavaProject.Dayoung.domain.user.facade.UserFacade;
 import JavaProject.Dayoung.domain.user.presentation.dto.response.RankListResponse;
 import JavaProject.Dayoung.domain.user.repository.UserRepository;
 import lombok.RequiredArgsConstructor;
+import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -20,15 +21,17 @@ public class GetScoreRankService {
     private final UserFacade userFacade;
 
     public RankListResponse execute() {
-        List<User> user =  userRepository.findTop10ByOrderByScoreDesc();
+        List<User> allUsers = userRepository.findAll(Sort.by(Sort.Direction.DESC, "score"));
 
         User currentUser = userFacade.getCurrentUser();
+
+        int myRanking = List.of(allUsers).indexOf(currentUser);
 
         List<RankListResponse.RankResponse> rankListResponses = userRepository.findTop10ByOrderByScoreDesc()
             .stream()
             .map(RankListResponse.RankResponse::of)
             .collect(Collectors.toList());
 
-        return new RankListResponse(rankListResponses, currentUser.getName(), currentUser.getScore());
+        return new RankListResponse(rankListResponses, currentUser.getName(), currentUser.getScore(), myRanking);
     }
 }
