@@ -22,6 +22,7 @@ import javax.validation.constraints.NotNull;
 //[@Validated]
 //입력 파라미터의 유효성 검증은 컨트롤러에서 최대한 처리하고 넘겨주는 것이 좋다.
 //하지만 개발을 하다보면 불가피하게 다른 곳에서 파라미터를 검증해야 할 수 있다.
+//여기서 사용해준 이유는 토큰 재발급 때문
 @Tag(name = "유저", description = "유저 엔티티입니다")
 @RestController
 @RequiredArgsConstructor
@@ -39,8 +40,8 @@ public class UserController {
 
     @PostMapping("/signup")
     @Operation(summary = "유저 회원가입", description = "회원가입 할 때 사용하는 API")
-    public void signup(@RequestBody @Valid SignupRequest signupRequest) {
-        signupService.signUp(signupRequest);
+    public TokenResponse signup(@RequestBody @Valid SignupRequest signupRequest) {
+        return signupService.signUp(signupRequest);
     }
 
     @PostMapping("/login")
@@ -61,7 +62,7 @@ public class UserController {
         return myInfoService.execute();
     }
 
-    @PatchMapping("/modify/{user-id}")
+    @PatchMapping("/{user-id}")
     @Operation(summary = "유저 정보 수정", description = "유저 정보 수정 할 때 사용하는 API")
     public void modifyInfo(@RequestBody @Valid UpdateUserInfoRequest updateUserInfoRequest, @PathVariable("user-id") String parameter) {
         updateUserInfoService.modifyInfo(updateUserInfoRequest);

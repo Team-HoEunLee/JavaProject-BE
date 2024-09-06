@@ -5,6 +5,8 @@ import JavaProject.Dayoung.domain.user.entity.type.Role;
 import JavaProject.Dayoung.domain.user.exception.UserAlreadyExistException;
 import JavaProject.Dayoung.domain.user.presentation.dto.request.SignupRequest;
 import JavaProject.Dayoung.domain.user.repository.UserRepository;
+import JavaProject.Dayoung.global.security.TokenResponse;
+import JavaProject.Dayoung.global.security.jwt.JwtTokenProvider;
 import lombok.RequiredArgsConstructor;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
@@ -16,9 +18,10 @@ public class SignupService {
 
     private final UserRepository userRepository;
     private final PasswordEncoder passwordEncoder;
+    private final JwtTokenProvider jwtTokenProvider;
 
     @Transactional
-    public void signUp(SignupRequest signupRequest) {
+    public TokenResponse signUp(SignupRequest signupRequest) {
 
         if (userRepository.existsByAccountId(signupRequest.getAccountId())) {
             throw UserAlreadyExistException.EXCEPTION;
@@ -38,5 +41,7 @@ public class SignupService {
                     .score(0)
             .build()
         );
+
+        return jwtTokenProvider.createToken(signupRequest.getAccountId());
     }
 }
