@@ -16,7 +16,6 @@ public class QuizDetailResponse {
     private final String question;
     private final Level level;
     private final Area area;
-    private final IsSolved isSolved;
 
     public QuizDetailResponse(Quiz quiz) {
         quizId = quiz.getId();
@@ -24,6 +23,5 @@ public class QuizDetailResponse {
         question = quiz.getQuestion();
         level = quiz.getLevel();
         area = quiz.getArea();
-        isSolved = quiz.getIsSolved();
     }
 }

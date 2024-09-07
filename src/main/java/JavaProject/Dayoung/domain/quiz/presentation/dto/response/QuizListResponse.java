@@ -12,7 +12,6 @@ import lombok.Getter;
 public class QuizListResponse {
 
     private final Long quizId;
-    private final IsSolved isSolved;
     private final String title;
     private final String question;
     private final Area area;
@@ -20,7 +19,6 @@ public class QuizListResponse {
 
     public QuizListResponse(Quiz quiz) {
         this.quizId = quiz.getId();
-        this.isSolved = quiz.getIsSolved();
         this.title = quiz.getTitle();
         this.question = quiz.getQuestion();
         this.area = quiz.getArea();

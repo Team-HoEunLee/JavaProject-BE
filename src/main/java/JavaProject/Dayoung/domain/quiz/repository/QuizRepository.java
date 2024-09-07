@@ -13,7 +13,7 @@ import java.util.Optional;
 @Repository
 public interface QuizRepository extends CrudRepository<Quiz, Long> {
 
-    List<Quiz> findAllByTitleContainingAndAreaInAndLevelInAndIsSolved(String title, List<Area> area, List<Level> level, IsSolved isSolved);
+    List<Quiz> findAllByTitleContainingAndAreaInAndLevelIn(String title, List<Area> area, List<Level> level);
 
     Quiz findQuizById(Long id);
 
