@@ -17,10 +17,6 @@ import javax.persistence.*;
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
 public class Quiz {
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
-
     @Column(columnDefinition = "varchar(300)", nullable = false)
     private String title;
 
@@ -30,14 +26,6 @@ public class Quiz {
     @Enumerated(EnumType.STRING)
     @Column(nullable = false)
     private Level level;
-
-    @Enumerated(EnumType.STRING)
-    @Column(nullable = false)
-    private IsSolved isSolved;
-
-    @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "user_id", nullable = false)
-    private User user;
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "code_id", nullable = false)
