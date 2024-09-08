@@ -27,8 +27,6 @@ public class CreateQuizService {
                 .level(request.getLevel())
                 .question(request.getQuestion())
                 .title(request.getTitle())
-                .user(user)
-                .isSolved(IsSolved.FALSE)
                 .build());
     }
 }
