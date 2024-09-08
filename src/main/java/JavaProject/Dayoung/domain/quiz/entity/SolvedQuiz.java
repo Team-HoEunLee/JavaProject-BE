@@ -41,5 +41,5 @@ public class SolvedQuiz {
     @Enumerated(EnumType.STRING)
     @Column(nullable = false)
     private IsSolved isSolved;
-    
+
 }
