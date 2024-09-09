@@ -1,7 +1,6 @@
 package JavaProject.Dayoung.domain.quiz.presentation;
 
 import JavaProject.Dayoung.domain.area.entity.Area;
-import JavaProject.Dayoung.domain.quiz.entity.SolvedQuiz;
 import JavaProject.Dayoung.domain.quiz.entity.type.IsSolved;
 import JavaProject.Dayoung.domain.quiz.entity.type.Level;
 import JavaProject.Dayoung.domain.quiz.presentation.dto.request.CreateQuizRequest;
@@ -9,24 +8,37 @@ import JavaProject.Dayoung.domain.quiz.presentation.dto.request.SolveQuizRequest
 import JavaProject.Dayoung.domain.quiz.presentation.dto.response.CategoryListResponse;
 import JavaProject.Dayoung.domain.quiz.presentation.dto.response.QuizDetailResponse;
 import JavaProject.Dayoung.domain.quiz.presentation.dto.response.QuizListResponse;
-import JavaProject.Dayoung.domain.quiz.presentation.dto.response.SolveQuizResponse;
 import JavaProject.Dayoung.domain.quiz.service.CreateQuizService;
 import JavaProject.Dayoung.domain.quiz.service.QueryCategoryService;
 import JavaProject.Dayoung.domain.quiz.service.QueryQuizDetailService;
 import JavaProject.Dayoung.domain.quiz.service.QueryQuizService;
 import JavaProject.Dayoung.domain.quiz.service.SolveQuizService;
+import JavaProject.Dayoung.infra.openai.domain.ChatGPTResponse;
+import JavaProject.Dayoung.infra.openai.repository.ChatGPTRequest;
+import io.github.flashvayne.chatgpt.service.ChatgptService;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import lombok.RequiredArgsConstructor;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpEntity;
+import org.springframework.http.HttpHeaders;
+import org.springframework.http.HttpMethod;
+import org.springframework.http.MediaType;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.client.RestTemplate;
 
 import javax.validation.Valid;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 @RestController
 @RequiredArgsConstructor
 @Tag(name = "문제", description = "문제 엔티티입니다")
-@RequestMapping("/quizzes")
+@RequestMapping("/api/v1/chat-gpt")
 public class QuizController {
 
     private final CreateQuizService createQuizService;
@@ -34,8 +46,9 @@ public class QuizController {
     private final QueryQuizService queryQuizService;
     private final QueryCategoryService queryCategoryService;
     private final SolveQuizService solveQuizService;
+    private final ChatgptService chatgptService;
 
-    @PostMapping
+    @PostMapping("csfsd")
     @Operation(summary = "문제 생성", description = "어드민이 문제를 등록할 때 사용하는 API")
     public void createQuiz(@RequestBody @Valid CreateQuizRequest request) {
         createQuizService.execute(request);
@@ -63,10 +76,10 @@ public class QuizController {
     public CategoryListResponse getQuizList() {
         return queryCategoryService.execute();
     }
-
-    @GetMapping("/solve")
+    @PostMapping()
     @Operation(summary = "퀴즈 풀기", description = "문제를 풀면 AI가 문제의 답변을 반환합니다.")
-    public SolveQuizResponse solveQuiz(@RequestBody SolveQuizRequest request) {
+    public Map<String, String> solveQuiz(@RequestBody SolveQuizRequest request) {
+
         return solveQuizService.execute(request);
     }
 }

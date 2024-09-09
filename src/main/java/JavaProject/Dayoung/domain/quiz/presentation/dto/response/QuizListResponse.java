@@ -2,7 +2,6 @@ package JavaProject.Dayoung.domain.quiz.presentation.dto.response;
 
 import JavaProject.Dayoung.domain.area.entity.Area;
 import JavaProject.Dayoung.domain.quiz.entity.Quiz;
-import JavaProject.Dayoung.domain.quiz.entity.type.IsSolved;
 import JavaProject.Dayoung.domain.quiz.entity.type.Level;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
