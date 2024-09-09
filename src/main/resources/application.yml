@@ -9,7 +9,7 @@ spring:
 
   jpa:
     hibernate:
-      ddl-auto: validate
+      ddl-auto: update
     properties:
       hibernate:
         show_sql: true #sql 로그를 볼 수 있게 해줌
@@ -38,7 +38,3 @@ logging:
         type:
           descriptor:
             sql: trace #hibernate이 보여주는 로그에 있는 ?에 어떤 값이 들어갔는지 구체적으로 알고 싶을 때 사용하는 옵션
-
-chatgpt:
-  api-key: ${CHAT_GPT_API_KEY}
-
