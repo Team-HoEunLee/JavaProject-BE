@@ -13,32 +13,20 @@ import JavaProject.Dayoung.domain.quiz.service.QueryCategoryService;
 import JavaProject.Dayoung.domain.quiz.service.QueryQuizDetailService;
 import JavaProject.Dayoung.domain.quiz.service.QueryQuizService;
 import JavaProject.Dayoung.domain.quiz.service.SolveQuizService;
-import JavaProject.Dayoung.infra.openai.domain.ChatGPTResponse;
-import JavaProject.Dayoung.infra.openai.repository.ChatGPTRequest;
 import io.github.flashvayne.chatgpt.service.ChatgptService;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import lombok.RequiredArgsConstructor;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpEntity;
-import org.springframework.http.HttpHeaders;
-import org.springframework.http.HttpMethod;
-import org.springframework.http.MediaType;
-import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
-import org.springframework.web.client.RestTemplate;
 
 import javax.validation.Valid;
-import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-import java.util.regex.Matcher;
-import java.util.regex.Pattern;
 
 @RestController
 @RequiredArgsConstructor
 @Tag(name = "문제", description = "문제 엔티티입니다")
-@RequestMapping("/api/v1/chat-gpt")
+@RequestMapping("/quizzes")
 public class QuizController {
 
     private final CreateQuizService createQuizService;
@@ -46,9 +34,8 @@ public class QuizController {
     private final QueryQuizService queryQuizService;
     private final QueryCategoryService queryCategoryService;
     private final SolveQuizService solveQuizService;
-    private final ChatgptService chatgptService;
 
-    @PostMapping("csfsd")
+    @PostMapping
     @Operation(summary = "문제 생성", description = "어드민이 문제를 등록할 때 사용하는 API")
     public void createQuiz(@RequestBody @Valid CreateQuizRequest request) {
         createQuizService.execute(request);
@@ -76,7 +63,7 @@ public class QuizController {
     public CategoryListResponse getQuizList() {
         return queryCategoryService.execute();
     }
-    @PostMapping()
+    @PostMapping("solve")
     @Operation(summary = "퀴즈 풀기", description = "문제를 풀면 AI가 문제의 답변을 반환합니다.")
     public Map<String, String> solveQuiz(@RequestBody SolveQuizRequest request) {
 
