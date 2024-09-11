@@ -1,7 +1,6 @@
 package JavaProject.Dayoung.domain.quiz.service;
 
 import JavaProject.Dayoung.domain.quiz.entity.Quiz;
-import JavaProject.Dayoung.domain.quiz.entity.type.IsSolved;
 import JavaProject.Dayoung.domain.quiz.presentation.dto.request.CreateQuizRequest;
 import JavaProject.Dayoung.domain.quiz.repository.QuizRepository;
 import JavaProject.Dayoung.domain.user.entity.User;

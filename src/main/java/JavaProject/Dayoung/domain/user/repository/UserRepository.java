@@ -13,5 +13,4 @@ public interface UserRepository extends JpaRepository<User, Long> {
     boolean existsByAccountId(String accountId);
 
     List<User> findTop10ByOrderByScoreDesc();
-
 }

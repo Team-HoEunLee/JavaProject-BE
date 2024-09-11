@@ -28,11 +28,16 @@ public class QueryQuizService {
         List<Quiz> quizzes = quizRepository.findAllByTitleContainingAndAreaInAndLevelIn(title, area, level);
 
         return quizzes.stream()
-            .filter(quiz -> {
-                List<SolvedQuiz> solvedQuizzes = solvedQuizRepository.findAllById(quiz.getId());
-                return solvedQuizzes.stream().anyMatch(solvedQuiz -> solvedQuiz.getIsSolved() == isSolved);
-            })
-            .map(QuizListResponse::new)
-            .collect(Collectors.toList());
+                .filter(quiz -> {
+                    List<SolvedQuiz> solvedQuizzes = solvedQuizRepository.findAllById(quiz.getId());
+                    return solvedQuizzes.stream().anyMatch(solvedQuiz -> solvedQuiz.getIsSolved() == isSolved);
+                })
+                .map(QuizListResponse::new)
+                .collect(Collectors.toList());
+
+        return quizRepository.findAllByTitleContainingAndAreaInAndLevelIn(title, area, level, isSolved)
+                .stream()
+                .map(QuizListResponse::new)
+                .collect(Collectors.toList());
     }
 }

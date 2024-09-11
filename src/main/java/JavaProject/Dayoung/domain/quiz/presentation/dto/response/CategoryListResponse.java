@@ -13,6 +13,4 @@ public class CategoryListResponse {
 
     private List<Code> codes;
     private List<Area> areas;
-
 }
-

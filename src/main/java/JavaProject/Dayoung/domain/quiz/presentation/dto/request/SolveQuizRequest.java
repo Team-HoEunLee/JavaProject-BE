@@ -17,5 +17,4 @@ public class SolveQuizRequest {
     @NotNull(message = "답변을 입력하세요")
     @Size(min = 1, max = 1000)
     private String answer;
-
 }

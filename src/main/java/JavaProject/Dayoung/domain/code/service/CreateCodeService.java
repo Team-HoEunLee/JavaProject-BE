@@ -16,7 +16,7 @@ public class CreateCodeService {
 
     public void execute(CreateCodeRequest request) {
         codeRepository.save(Code.builder()
-            .codeName(request.getCodeName())
-            .build());
+                .codeName(request.getCodeName())
+                .build());
     }
 }

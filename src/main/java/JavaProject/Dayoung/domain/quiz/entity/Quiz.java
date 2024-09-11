@@ -2,14 +2,8 @@ package JavaProject.Dayoung.domain.quiz.entity;
 
 import JavaProject.Dayoung.domain.area.entity.Area;
 import JavaProject.Dayoung.domain.code.entity.Code;
-import JavaProject.Dayoung.domain.quiz.entity.type.IsSolved;
 import JavaProject.Dayoung.domain.quiz.entity.type.Level;
-import JavaProject.Dayoung.domain.user.entity.User;
-import lombok.AccessLevel;
-import lombok.AllArgsConstructor;
-import lombok.Builder;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
+import lombok.*;
 
 import javax.persistence.*;
 
@@ -35,11 +29,10 @@ public class Quiz {
     private Level level;
 
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "code_id", nullable = false)
+    @JoinColumn(name = "code_id", nullable = true)
     private Code code;
 
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "area_id", nullable = false)
+    @JoinColumn(name = "area_id", nullable = true)
     private Area area;
-
 }

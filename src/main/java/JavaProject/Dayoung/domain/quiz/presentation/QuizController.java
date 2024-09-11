@@ -8,12 +8,7 @@ import JavaProject.Dayoung.domain.quiz.presentation.dto.request.SolveQuizRequest
 import JavaProject.Dayoung.domain.quiz.presentation.dto.response.CategoryListResponse;
 import JavaProject.Dayoung.domain.quiz.presentation.dto.response.QuizDetailResponse;
 import JavaProject.Dayoung.domain.quiz.presentation.dto.response.QuizListResponse;
-import JavaProject.Dayoung.domain.quiz.service.CreateQuizService;
-import JavaProject.Dayoung.domain.quiz.service.QueryCategoryService;
-import JavaProject.Dayoung.domain.quiz.service.QueryQuizDetailService;
-import JavaProject.Dayoung.domain.quiz.service.QueryQuizService;
-import JavaProject.Dayoung.domain.quiz.service.SolveQuizService;
-import io.github.flashvayne.chatgpt.service.ChatgptService;
+import JavaProject.Dayoung.domain.quiz.service.*;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import lombok.RequiredArgsConstructor;
@@ -50,10 +45,10 @@ public class QuizController {
     @GetMapping("/list")
     @Operation(summary = "문제 리스트 조회", description = "카테고리를 사용해 문제리스트를 조회")
     public List<QuizListResponse> getQuizList(
-        @RequestParam(value = "title") String title,
-        @RequestParam(value = "area") List<Area> area,
-        @RequestParam(value = "level") List<Level> level,
-        @RequestParam(value = "is_solved") IsSolved isSolved
+            @RequestParam(value = "title") String title,
+            @RequestParam(value = "area") List<Area> area,
+            @RequestParam(value = "level") List<Level> level,
+            @RequestParam(value = "is_solved") IsSolved isSolved
     ) {
         return queryQuizService.execute(title, area, level, isSolved);
     }
@@ -63,6 +58,7 @@ public class QuizController {
     public CategoryListResponse getQuizList() {
         return queryCategoryService.execute();
     }
+
     @PostMapping("solve")
     @Operation(summary = "퀴즈 풀기", description = "문제를 풀면 AI가 문제의 답변을 반환합니다.")
     public Map<String, String> solveQuiz(@RequestBody SolveQuizRequest request) {
