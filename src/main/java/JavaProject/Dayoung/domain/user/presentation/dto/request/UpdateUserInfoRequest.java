@@ -1,6 +1,7 @@
 package JavaProject.Dayoung.domain.user.presentation.dto.request;
 
-import JavaProject.Dayoung.domain.user.entity.type.Major;
+import JavaProject.Dayoung.domain.area.entity.Area;
+import JavaProject.Dayoung.domain.code.entity.Code;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 
@@ -12,7 +13,9 @@ public class UpdateUserInfoRequest {
 
     private String name;
 
-    private Major major;
+    private Area area;
 
     private String introduction;
+
+    private Code code;
 }

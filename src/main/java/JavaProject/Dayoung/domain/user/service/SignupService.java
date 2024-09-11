@@ -31,15 +31,16 @@ public class SignupService {
 
         userRepository.save(
                 User.builder()
-                    .accountId(signupRequest.getAccountId())
-                    .email(signupRequest.getEmail())
-                    .password(password)
-                    .name(signupRequest.getName())
-                    .introduction(signupRequest.getIntroduction())
-                    .major(signupRequest.getMajor())
-                    .role(Role.STUDENT)
-                    .score(0)
-            .build()
+                        .accountId(signupRequest.getAccountId())
+                        .email(signupRequest.getEmail())
+                        .password(password)
+                        .name(signupRequest.getName())
+                        .introduction(signupRequest.getIntroduction())
+                        .area(signupRequest.getArea())
+                        .code(signupRequest.getCode())
+                        .role(Role.STUDENT)
+                        .score(0)
+                        .build()
         );
 
         return jwtTokenProvider.createToken(signupRequest.getAccountId());
