@@ -25,7 +25,7 @@ public class QueryQuizService {
 
     public List<QuizListResponse> execute(String title, List<Area> area, List<Level> level, IsSolved isSolved) {
 
-        List<Quiz> quizzes = quizRepository.findAllByTitleContainingAndAreaInAndLevelIn(title, area, level);
+        List<Quiz> quizzes = quizRepository.findAllByTitleContainingAndAreaInAndLevelIn(title, area, level, isSolved);
 
         return quizzes.stream()
                 .filter(quiz -> {
