@@ -25,5 +25,5 @@ public class MyInfoResponse {
 
     private Code code;
 
-    private List<Long> solvedQuizIds;
+    //private List<Long> solvedQuizIds;
 }

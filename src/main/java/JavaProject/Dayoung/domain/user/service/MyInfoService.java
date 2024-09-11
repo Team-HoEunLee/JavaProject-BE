@@ -30,6 +30,7 @@ public class MyInfoService {
 
         int myRank = allUsers.indexOf(currentUser);
 
+        /*
         return MyInfoResponse.builder()
                 .accountId(currentUser.getAccountId())
                 .name(currentUser.getName())
@@ -37,18 +38,21 @@ public class MyInfoService {
                 .myRank(myRank)
                 .build();
 
+
         List<Long> solvedQuizIds = currentUser.getQuizzes().stream()
                 .filter(quiz -> quiz.getIsSolved() == IsSolved.TRUE)
                 .map(Quiz::getId)
                 .collect(Collectors.toList());
 
+
+         */
         return MyInfoResponse.builder()
                 .accountId(currentUser.getAccountId())
                 .name(currentUser.getName())
                 .introduction(currentUser.getIntroduction())
                 .area(currentUser.getArea())
                 .code(currentUser.getCode())
-                .solvedQuizIds(solvedQuizIds)
+                //.solvedQuizIds(solvedQuizIds)
                 .build();
     }
 }

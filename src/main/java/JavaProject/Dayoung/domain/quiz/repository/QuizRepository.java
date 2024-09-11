@@ -12,7 +12,7 @@ import java.util.List;
 @Repository
 public interface QuizRepository extends CrudRepository<Quiz, Long> {
 
-    List<Quiz> findAllByTitleContainingAndAreaInAndLevelIn(String title, List<Area> area, List<Level> level, IsSolved isSolved);
+    List<Quiz> findAllByTitleContainingAndAreaInAndLevelIn(String title, List<Area> area, List<Level> level);
 
     Quiz findQuizById(Long id);
 }
