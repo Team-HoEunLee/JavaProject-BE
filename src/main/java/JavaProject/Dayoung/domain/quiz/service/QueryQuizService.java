@@ -34,10 +34,5 @@ public class QueryQuizService {
                 })
                 .map(QuizListResponse::new)
                 .collect(Collectors.toList());
-
-        return quizRepository.findAllByTitleContainingAndAreaInAndLevelIn(title, area, level, isSolved)
-                .stream()
-                .map(QuizListResponse::new)
-                .collect(Collectors.toList());
     }
 }
