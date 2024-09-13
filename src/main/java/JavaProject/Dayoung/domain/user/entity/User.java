@@ -1,17 +1,10 @@
 package JavaProject.Dayoung.domain.user.entity;
 
 import JavaProject.Dayoung.domain.area.entity.Area;
-import JavaProject.Dayoung.domain.code.entity.Code;
-import JavaProject.Dayoung.domain.quiz.entity.Quiz;
 import JavaProject.Dayoung.domain.user.entity.type.Role;
-import lombok.AccessLevel;
-import lombok.AllArgsConstructor;
-import lombok.Builder;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
+import lombok.*;
 
 import javax.persistence.*;
-import java.util.List;
 
 @Entity
 @Getter

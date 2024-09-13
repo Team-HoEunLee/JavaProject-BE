@@ -21,6 +21,4 @@ public class MyInfoResponse {
     private int myRank;
 
     private Area area;
-
-    //private List<Long> solvedQuizIds;
 }
