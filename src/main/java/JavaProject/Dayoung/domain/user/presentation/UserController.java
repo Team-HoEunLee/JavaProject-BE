@@ -11,13 +11,18 @@ import JavaProject.Dayoung.global.security.TokenResponse;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import lombok.RequiredArgsConstructor;
+import org.springframework.cache.annotation.CacheConfig;
+import org.springframework.cache.annotation.Cacheable;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
 import javax.validation.constraints.NotNull;
 
+import static JavaProject.Dayoung.global.config.cache.CacheName.USER;
+
 @Validated
+@CacheConfig(cacheNames = USER)
 //@Valid는 기본적으로 컨트롤러에서만 동작하며 기본적으로 다른 계층에서는 검증이 되지 않는다
 //[@Validated]
 //입력 파라미터의 유효성 검증은 컨트롤러에서 최대한 처리하고 넘겨주는 것이 좋다.
@@ -57,6 +62,7 @@ public class UserController {
     }
 
     @GetMapping("/info")
+    @Cacheable
     @Operation(summary = "유저 정보 조회", description = "유저 정보 조회 할 때 사용하는 API")
     public MyInfoResponse getExecute() {
         return myInfoService.execute();
