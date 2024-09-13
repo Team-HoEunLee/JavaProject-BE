@@ -47,12 +47,11 @@ public class MyInfoService {
 
          */
         return MyInfoResponse.builder()
-                .accountId(currentUser.getAccountId())
-                .name(currentUser.getName())
-                .introduction(currentUser.getIntroduction())
-                .area(currentUser.getArea())
-                .code(currentUser.getCode())
-                //.solvedQuizIds(solvedQuizIds)
-                .build();
+            .accountId(currentUser.getAccountId())
+            .name(currentUser.getName())
+            .introduction(currentUser.getIntroduction())
+            .myRank(myRank)
+            .area(currentUser.getArea())
+            .build();
     }
 }

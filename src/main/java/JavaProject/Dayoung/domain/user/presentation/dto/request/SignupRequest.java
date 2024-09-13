@@ -1,7 +1,5 @@
 package JavaProject.Dayoung.domain.user.presentation.dto.request;
 
-import JavaProject.Dayoung.domain.area.entity.Area;
-import JavaProject.Dayoung.domain.code.entity.Code;
 import lombok.AccessLevel;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -29,8 +27,6 @@ public class SignupRequest {
     private String introduction;
 
     @Nullable
-    private Area area;
+    private Long areaId;
 
-    @Nullable
-    private Code code;
 }

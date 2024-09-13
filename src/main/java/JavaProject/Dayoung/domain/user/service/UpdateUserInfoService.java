@@ -20,7 +20,6 @@ public class UpdateUserInfoService {
         user.modifyInfo(updateUserInfoRequest.getAccountId(),
                 updateUserInfoRequest.getName(),
                 updateUserInfoRequest.getArea(),
-                updateUserInfoRequest.getIntroduction(),
-                updateUserInfoRequest.getCode());
+                updateUserInfoRequest.getIntroduction());
     }
 }
