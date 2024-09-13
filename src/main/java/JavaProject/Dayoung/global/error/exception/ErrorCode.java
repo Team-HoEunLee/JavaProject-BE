@@ -22,6 +22,8 @@ public enum ErrorCode {
 
     //quiz
     QUIZ_NOT_FOUND(404, "Quiz not found"),
+    CANNOT_UPDATE_QUIZ(401, "Cannot update quiz"),
+    CANNOT_DELETE_QUIZ(401, "Cannot Delete Quiz Exception"),
 
     //admin
     CODE_MISMATCH(404, "Code mismatch"),
