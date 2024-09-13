@@ -5,6 +5,7 @@ import JavaProject.Dayoung.domain.quiz.entity.type.IsSolved;
 import JavaProject.Dayoung.domain.quiz.entity.type.Level;
 import JavaProject.Dayoung.domain.quiz.presentation.dto.request.CreateQuizRequest;
 import JavaProject.Dayoung.domain.quiz.presentation.dto.request.SolveQuizRequest;
+import JavaProject.Dayoung.domain.quiz.presentation.dto.request.UpdateQuizRequest;
 import JavaProject.Dayoung.domain.quiz.presentation.dto.response.CategoryListResponse;
 import JavaProject.Dayoung.domain.quiz.presentation.dto.response.QuizDetailResponse;
 import JavaProject.Dayoung.domain.quiz.presentation.dto.response.QuizListResponse;
@@ -29,6 +30,8 @@ public class QuizController {
     private final QueryQuizService queryQuizService;
     private final QueryCategoryService queryCategoryService;
     private final SolveQuizService solveQuizService;
+    private final UpdateQuizService updateQuizService;
+    private final DeleteQuizService deleteQuizService;
 
     @PostMapping
     @Operation(summary = "문제 생성", description = "어드민이 문제를 등록할 때 사용하는 API")
@@ -62,7 +65,18 @@ public class QuizController {
     @PostMapping("solve")
     @Operation(summary = "퀴즈 풀기", description = "문제를 풀면 AI가 문제의 답변을 반환합니다.")
     public Map<String, String> solveQuiz(@RequestBody SolveQuizRequest request) {
-
         return solveQuizService.execute(request);
+    }
+
+    @PatchMapping("/{quiz-id}")
+    @Operation(summary = "퀴즈 수정", description = "문제를 수정하는 api")
+    public void updateQuiz(@PathVariable("quiz-id") Long quizId, @RequestBody @Valid UpdateQuizRequest request) {
+        updateQuizService.execute(quizId, request);
+    }
+
+    @DeleteMapping("/{quiz-id}")
+    @Operation(summary = "퀴즈 삭제", description = "문제를 삭제하는 api")
+    public void deleteQuiz(@PathVariable("quiz-id") Long quizId) {
+        deleteQuizService.execute(quizId);
     }
 }
