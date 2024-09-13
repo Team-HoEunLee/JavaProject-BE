@@ -18,14 +18,14 @@ public class RedisCacheConfig {
     @Bean
     public CacheManager cacheManager(RedisConnectionFactory factory) {
         RedisCacheConfiguration cacheConfig = RedisCacheConfiguration.defaultCacheConfig()
-            .serializeKeysWith(RedisSerializationContext.SerializationPair.fromSerializer(new StringRedisSerializer()))
-            .serializeValuesWith(RedisSerializationContext.SerializationPair.fromSerializer(new GenericJackson2JsonRedisSerializer()))
-            .entryTtl(Duration.ofMinutes(1L)); //10분
+                .serializeKeysWith(RedisSerializationContext.SerializationPair.fromSerializer(new StringRedisSerializer()))
+                .serializeValuesWith(RedisSerializationContext.SerializationPair.fromSerializer(new GenericJackson2JsonRedisSerializer()))
+                .entryTtl(Duration.ofMinutes(1L)); //10분
 
         return RedisCacheManager
-            .RedisCacheManagerBuilder
-            .fromConnectionFactory(factory)
-            .cacheDefaults(cacheConfig)
-            .build();
+                .RedisCacheManagerBuilder
+                .fromConnectionFactory(factory)
+                .cacheDefaults(cacheConfig)
+                .build();
     }
 }

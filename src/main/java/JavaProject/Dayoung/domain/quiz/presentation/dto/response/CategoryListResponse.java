@@ -12,5 +12,6 @@ import java.util.List;
 public class CategoryListResponse {
 
     private List<Code> codes;
+
     private List<Area> areas;
 }

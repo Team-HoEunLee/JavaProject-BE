@@ -12,6 +12,7 @@ import javax.persistence.*;
 @Getter
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
 @AllArgsConstructor
+@Builder
 public class Quiz {
 
     @Id
@@ -39,15 +40,6 @@ public class Quiz {
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "user_id", nullable = false)
     private User user;
-
-    @Builder
-    public Quiz(String title, String question, Level level, Code code, Area area) {
-        this.title = title;
-        this.question = question;
-        this.level = level;
-        this.code = code;
-        this.area = area;
-    }
 
     public void updateQuiz(String title, String question, Level level, Code code, Area area) {
         this.title = title;

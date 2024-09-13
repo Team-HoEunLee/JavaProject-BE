@@ -11,9 +11,13 @@ import lombok.Getter;
 public class QuizListResponse {
 
     private final Long quizId;
+
     private final String title;
+
     private final String question;
+
     private final Area area;
+
     private final Level level;
 
     public QuizListResponse(Quiz quiz) {
