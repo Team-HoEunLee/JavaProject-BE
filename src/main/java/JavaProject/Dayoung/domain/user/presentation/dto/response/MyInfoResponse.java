@@ -6,6 +6,8 @@ import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 
+import java.util.List;
+
 @Builder
 @Getter
 @NoArgsConstructor(force = true)
@@ -21,4 +23,6 @@ public class MyInfoResponse {
     private int myRank;
 
     private Area area;
+
+    private List<Long> unsolvedQuizIds;
 }
