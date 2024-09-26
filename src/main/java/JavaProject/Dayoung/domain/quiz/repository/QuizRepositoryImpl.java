@@ -39,15 +39,6 @@ public class QuizRepositoryImpl implements QuizPort {
             .fetch();
     }
 
-    @Override
-    public Quiz queryQuizById(Long id) {
-        return queryFactory
-            .selectFrom(quiz)
-            .where(quiz.id.eq(id))
-            .fetchOne();
-    }
-
-
     private BooleanExpression containsTitle(String title) {
         return title == null ? null : quiz.title.contains(title);
     }
