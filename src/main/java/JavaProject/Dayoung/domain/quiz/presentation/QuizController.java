@@ -18,6 +18,7 @@ import org.springframework.data.web.PageableDefault;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
+import javax.validation.constraints.Positive;
 import java.util.List;
 import java.util.Map;
 
@@ -54,7 +55,7 @@ public class QuizController {
             @RequestParam(value = "area") List<Area> area,
             @RequestParam(value = "level") List<Level> level,
             @RequestParam(value = "is_solved") IsSolved isSolved,
-            @PageableDefault(page = 1, size = 15) Pageable pageable
+            @PageableDefault(page = 1, size = 15) @Positive Pageable pageable
     ) {
         return queryQuizListService.execute(title, area, level, isSolved, pageable);
     }
