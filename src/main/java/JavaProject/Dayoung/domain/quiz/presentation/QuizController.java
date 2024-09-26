@@ -13,9 +13,12 @@ import JavaProject.Dayoung.domain.quiz.service.*;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import lombok.RequiredArgsConstructor;
+import org.springframework.data.domain.Pageable;
+import org.springframework.data.web.PageableDefault;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
+import javax.validation.constraints.Positive;
 import java.util.List;
 import java.util.Map;
 
@@ -27,7 +30,7 @@ public class QuizController {
 
     private final CreateQuizService createQuizService;
     private final QueryQuizDetailService queryQuizDetailService;
-    private final QueryQuizService queryQuizService;
+    private final QueryQuizListService queryQuizListService;
     private final QueryCategoryService queryCategoryService;
     private final SolveQuizService solveQuizService;
     private final UpdateQuizService updateQuizService;
@@ -51,9 +54,10 @@ public class QuizController {
             @RequestParam(value = "title") String title,
             @RequestParam(value = "area") List<Area> area,
             @RequestParam(value = "level") List<Level> level,
-            @RequestParam(value = "is_solved") IsSolved isSolved
+            @RequestParam(value = "is_solved") IsSolved isSolved,
+            @RequestParam(value = "page", defaultValue = "1") @Positive int page
     ) {
-        return queryQuizService.execute(title, area, level, isSolved);
+        return queryQuizListService.execute(title, area, level, isSolved, page);
     }
 
     @GetMapping("/category")

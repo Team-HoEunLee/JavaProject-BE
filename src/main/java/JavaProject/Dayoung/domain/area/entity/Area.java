@@ -19,7 +19,4 @@ public class Area {
     @Column(columnDefinition = "varchar(15)")
     private String areaName;
 
-    @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "quiz_id", nullable = true)
-    private Quiz quiz;
 }
