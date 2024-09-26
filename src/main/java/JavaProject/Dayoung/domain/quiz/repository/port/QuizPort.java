@@ -10,6 +10,6 @@ public interface QuizPort {
 
     List<Quiz> queryAllByTitleAndAreasAndLevel(String title, List<Area> area, List<Level> level);
 
-    Quiz findQuizById(Long id);
+    Quiz queryQuizById(Long id);
 
 }
