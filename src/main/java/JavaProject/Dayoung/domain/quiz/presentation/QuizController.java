@@ -55,9 +55,9 @@ public class QuizController {
             @RequestParam(value = "area") List<Area> area,
             @RequestParam(value = "level") List<Level> level,
             @RequestParam(value = "is_solved") IsSolved isSolved,
-            @PageableDefault(page = 1, size = 15) @Positive Pageable pageable
+            @RequestParam(value = "page", defaultValue = "1") @Positive int page
     ) {
-        return queryQuizListService.execute(title, area, level, isSolved, pageable);
+        return queryQuizListService.execute(title, area, level, isSolved, page);
     }
 
     @GetMapping("/category")

@@ -18,7 +18,7 @@ public class QuizFilter {
     private final IsSolved isSolved;
     private final int page;
     @Builder.Default
-    private int limit = 10;
+    private int limit = 15;
     public int getOffset() {
         return (page - 1) * limit;
     }
