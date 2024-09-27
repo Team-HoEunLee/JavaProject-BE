@@ -1,6 +1,5 @@
 package JavaProject.Dayoung.domain.area.entity;
 
-import JavaProject.Dayoung.domain.quiz.entity.Quiz;
 import lombok.*;
 
 import javax.persistence.*;
