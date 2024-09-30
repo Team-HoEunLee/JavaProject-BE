@@ -10,7 +10,7 @@ import org.springframework.context.annotation.Configuration;
 //http://localhost:8080/swagger-ui/index.html
 @OpenAPIDefinition(
         info = @Info(
-                title = "테스트 : 테스트용 API 명세서",
+                title = "SWAGGER : Dayoung API 명세",
                 description = "안녕하세요"
         ),
         security = @SecurityRequirement(name = "bearerAuth")
