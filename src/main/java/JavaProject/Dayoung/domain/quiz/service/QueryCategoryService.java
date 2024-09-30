@@ -1,8 +1,8 @@
 package JavaProject.Dayoung.domain.quiz.service;
 
-import JavaProject.Dayoung.domain.area.entity.Area;
+import JavaProject.Dayoung.domain.area.domain.Area;
 import JavaProject.Dayoung.domain.area.repository.AreaRepository;
-import JavaProject.Dayoung.domain.code.entity.Code;
+import JavaProject.Dayoung.domain.code.domain.Code;
 import JavaProject.Dayoung.domain.code.repository.CodeRepository;
 import JavaProject.Dayoung.domain.quiz.presentation.dto.response.CategoryListResponse;
 import lombok.RequiredArgsConstructor;

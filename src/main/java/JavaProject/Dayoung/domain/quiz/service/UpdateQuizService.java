@@ -1,10 +1,10 @@
 package JavaProject.Dayoung.domain.quiz.service;
 
-import JavaProject.Dayoung.domain.quiz.entity.Quiz;
+import JavaProject.Dayoung.domain.quiz.domain.Quiz;
 import JavaProject.Dayoung.domain.quiz.exception.CannotUpdateQuizException;
 import JavaProject.Dayoung.domain.quiz.facade.QuizFacade;
 import JavaProject.Dayoung.domain.quiz.presentation.dto.request.UpdateQuizRequest;
-import JavaProject.Dayoung.domain.user.entity.User;
+import JavaProject.Dayoung.domain.user.domain.User;
 import JavaProject.Dayoung.domain.user.facade.UserFacade;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;

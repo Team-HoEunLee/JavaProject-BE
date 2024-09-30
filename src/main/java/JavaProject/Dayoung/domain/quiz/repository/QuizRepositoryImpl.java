@@ -1,10 +1,10 @@
 package JavaProject.Dayoung.domain.quiz.repository;
 
 
-import JavaProject.Dayoung.domain.area.entity.Area;
-import JavaProject.Dayoung.domain.quiz.entity.Quiz;
-import JavaProject.Dayoung.domain.quiz.entity.type.IsSolved;
-import JavaProject.Dayoung.domain.quiz.entity.type.Level;
+import JavaProject.Dayoung.domain.area.domain.Area;
+import JavaProject.Dayoung.domain.quiz.domain.Quiz;
+import JavaProject.Dayoung.domain.quiz.domain.type.IsSolved;
+import JavaProject.Dayoung.domain.quiz.domain.type.Level;
 import JavaProject.Dayoung.domain.quiz.presentation.dto.request.QuizFilter;
 import JavaProject.Dayoung.domain.quiz.repository.port.QuizPort;
 import com.querydsl.core.types.dsl.BooleanExpression;
@@ -14,8 +14,8 @@ import org.springframework.stereotype.Repository;
 
 import java.util.List;
 
-import static JavaProject.Dayoung.domain.quiz.entity.QQuiz.quiz;
-import static JavaProject.Dayoung.domain.quiz.entity.QSolvedQuiz.solvedQuiz;
+import static JavaProject.Dayoung.domain.quiz.domain.QQuiz.quiz;
+import static JavaProject.Dayoung.domain.quiz.domain.QSolvedQuiz.solvedQuiz;
 
 @Repository
 @RequiredArgsConstructor

@@ -1,7 +1,7 @@
 package JavaProject.Dayoung.domain.quiz.presentation.dto.response;
 
-import JavaProject.Dayoung.domain.area.entity.Area;
-import JavaProject.Dayoung.domain.code.entity.Code;
+import JavaProject.Dayoung.domain.area.domain.Area;
+import JavaProject.Dayoung.domain.code.domain.Code;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 

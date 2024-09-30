@@ -1,8 +1,8 @@
 package JavaProject.Dayoung.domain.quiz.presentation;
 
-import JavaProject.Dayoung.domain.area.entity.Area;
-import JavaProject.Dayoung.domain.quiz.entity.type.IsSolved;
-import JavaProject.Dayoung.domain.quiz.entity.type.Level;
+import JavaProject.Dayoung.domain.area.domain.Area;
+import JavaProject.Dayoung.domain.quiz.domain.type.IsSolved;
+import JavaProject.Dayoung.domain.quiz.domain.type.Level;
 import JavaProject.Dayoung.domain.quiz.presentation.dto.request.CreateQuizRequest;
 import JavaProject.Dayoung.domain.quiz.presentation.dto.request.SolveQuizRequest;
 import JavaProject.Dayoung.domain.quiz.presentation.dto.request.UpdateQuizRequest;
@@ -13,8 +13,6 @@ import JavaProject.Dayoung.domain.quiz.service.*;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import lombok.RequiredArgsConstructor;
-import org.springframework.data.domain.Pageable;
-import org.springframework.data.web.PageableDefault;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;

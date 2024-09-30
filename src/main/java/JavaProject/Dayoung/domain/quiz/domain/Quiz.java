@@ -1,9 +1,9 @@
-package JavaProject.Dayoung.domain.quiz.entity;
+package JavaProject.Dayoung.domain.quiz.domain;
 
-import JavaProject.Dayoung.domain.area.entity.Area;
-import JavaProject.Dayoung.domain.code.entity.Code;
-import JavaProject.Dayoung.domain.quiz.entity.type.Level;
-import JavaProject.Dayoung.domain.user.entity.User;
+import JavaProject.Dayoung.domain.area.domain.Area;
+import JavaProject.Dayoung.domain.code.domain.Code;
+import JavaProject.Dayoung.domain.quiz.domain.type.Level;
+import JavaProject.Dayoung.domain.user.domain.User;
 import lombok.*;
 
 import javax.persistence.*;

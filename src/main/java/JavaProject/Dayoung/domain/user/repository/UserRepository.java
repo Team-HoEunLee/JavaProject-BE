@@ -1,6 +1,6 @@
 package JavaProject.Dayoung.domain.user.repository;
 
-import JavaProject.Dayoung.domain.user.entity.User;
+import JavaProject.Dayoung.domain.user.domain.User;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 import java.util.List;

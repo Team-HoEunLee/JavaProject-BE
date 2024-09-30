@@ -1,4 +1,4 @@
-package JavaProject.Dayoung.domain.area.entity;
+package JavaProject.Dayoung.domain.area.domain;
 
 import lombok.*;
 

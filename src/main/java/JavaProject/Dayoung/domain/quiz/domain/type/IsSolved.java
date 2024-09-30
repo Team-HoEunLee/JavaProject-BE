@@ -1,4 +1,4 @@
-package JavaProject.Dayoung.domain.quiz.entity.type;
+package JavaProject.Dayoung.domain.quiz.domain.type;
 
 public enum IsSolved {
     ALL,

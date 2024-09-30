@@ -1,7 +1,7 @@
-package JavaProject.Dayoung.domain.user.entity;
+package JavaProject.Dayoung.domain.user.domain;
 
-import JavaProject.Dayoung.domain.area.entity.Area;
-import JavaProject.Dayoung.domain.user.entity.type.Role;
+import JavaProject.Dayoung.domain.area.domain.Area;
+import JavaProject.Dayoung.domain.user.domain.type.Role;
 import lombok.*;
 
 import javax.persistence.*;

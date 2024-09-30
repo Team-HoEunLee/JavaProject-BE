@@ -1,7 +1,7 @@
 package JavaProject.Dayoung.global.security.auth;
 
 
-import JavaProject.Dayoung.domain.user.entity.User;
+import JavaProject.Dayoung.domain.user.domain.User;
 import JavaProject.Dayoung.domain.user.exception.UserNotFoundException;
 import JavaProject.Dayoung.domain.user.repository.UserRepository;
 import lombok.RequiredArgsConstructor;

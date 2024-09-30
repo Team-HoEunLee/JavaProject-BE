@@ -1,8 +1,8 @@
 package JavaProject.Dayoung.domain.quiz.service;
 
-import JavaProject.Dayoung.domain.area.entity.Area;
-import JavaProject.Dayoung.domain.quiz.entity.type.IsSolved;
-import JavaProject.Dayoung.domain.quiz.entity.type.Level;
+import JavaProject.Dayoung.domain.area.domain.Area;
+import JavaProject.Dayoung.domain.quiz.domain.type.IsSolved;
+import JavaProject.Dayoung.domain.quiz.domain.type.Level;
 import JavaProject.Dayoung.domain.quiz.presentation.dto.request.QuizFilter;
 import JavaProject.Dayoung.domain.quiz.presentation.dto.response.QuizListResponse;
 import JavaProject.Dayoung.domain.quiz.repository.port.QuizPort;

@@ -1,7 +1,7 @@
 package JavaProject.Dayoung.domain.quiz.repository;
 
-import JavaProject.Dayoung.domain.quiz.entity.SolvedQuiz;
-import JavaProject.Dayoung.domain.quiz.entity.type.IsSolved;
+import JavaProject.Dayoung.domain.quiz.domain.SolvedQuiz;
+import JavaProject.Dayoung.domain.quiz.domain.type.IsSolved;
 import org.springframework.data.repository.CrudRepository;
 
 import java.util.List;

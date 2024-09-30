@@ -1,9 +1,9 @@
 package JavaProject.Dayoung.domain.user.service;
 
-import JavaProject.Dayoung.domain.quiz.entity.SolvedQuiz;
-import JavaProject.Dayoung.domain.quiz.entity.type.IsSolved;
+import JavaProject.Dayoung.domain.quiz.domain.SolvedQuiz;
+import JavaProject.Dayoung.domain.quiz.domain.type.IsSolved;
 import JavaProject.Dayoung.domain.quiz.repository.SolvedQuizRepository;
-import JavaProject.Dayoung.domain.user.entity.User;
+import JavaProject.Dayoung.domain.user.domain.User;
 import JavaProject.Dayoung.domain.user.facade.UserFacade;
 import JavaProject.Dayoung.domain.user.presentation.dto.response.MyInfoResponse;
 import JavaProject.Dayoung.domain.user.repository.UserRepository;

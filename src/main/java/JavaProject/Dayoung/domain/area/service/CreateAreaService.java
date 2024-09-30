@@ -1,6 +1,6 @@
 package JavaProject.Dayoung.domain.area.service;
 
-import JavaProject.Dayoung.domain.area.entity.Area;
+import JavaProject.Dayoung.domain.area.domain.Area;
 import JavaProject.Dayoung.domain.area.presentation.dto.request.CreateAreaRequest;
 import JavaProject.Dayoung.domain.area.repository.AreaRepository;
 import lombok.RequiredArgsConstructor;

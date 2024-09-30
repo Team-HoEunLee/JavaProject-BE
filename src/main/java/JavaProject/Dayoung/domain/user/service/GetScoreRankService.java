@@ -1,6 +1,6 @@
 package JavaProject.Dayoung.domain.user.service;
 
-import JavaProject.Dayoung.domain.user.entity.User;
+import JavaProject.Dayoung.domain.user.domain.User;
 import JavaProject.Dayoung.domain.user.facade.UserFacade;
 import JavaProject.Dayoung.domain.user.presentation.dto.response.RankListResponse;
 import JavaProject.Dayoung.domain.user.repository.UserRepository;

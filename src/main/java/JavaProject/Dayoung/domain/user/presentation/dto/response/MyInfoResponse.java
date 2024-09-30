@@ -1,6 +1,6 @@
 package JavaProject.Dayoung.domain.user.presentation.dto.response;
 
-import JavaProject.Dayoung.domain.area.entity.Area;
+import JavaProject.Dayoung.domain.area.domain.Area;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Getter;

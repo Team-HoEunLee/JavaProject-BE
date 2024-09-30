@@ -1,6 +1,6 @@
 package JavaProject.Dayoung.domain.user.service;
 
-import JavaProject.Dayoung.domain.user.entity.User;
+import JavaProject.Dayoung.domain.user.domain.User;
 import JavaProject.Dayoung.domain.user.exception.PasswordMismatchException;
 import JavaProject.Dayoung.domain.user.facade.UserFacade;
 import JavaProject.Dayoung.domain.user.presentation.dto.request.ChangePasswordRequest;
