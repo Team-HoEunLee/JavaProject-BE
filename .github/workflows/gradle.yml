@@ -73,7 +73,7 @@ jobs:
         script: |
           sudo docker stop cicdcicd
           sudo docker rm cicdcicd
-          sudo docker run run -d -p 8080:8080 ilyoil2/cicdcicd
+          sudo docker run -dp 8080:8080 --name cicdcicd ilyoil2/cicdcicd
 
       # REMOVE Github IP FROM security group (9)
     - name: Remove IP FROM security group

@@ -16,9 +16,9 @@ spring:
     database-platform: org.hibernate.dialect.MySQL8Dialect
 
   redis:
-    host: localhost
-    port: 6379
-    password: asdf
+    host: ${REDIS_HOST:localhost}
+    port: ${REDIS_PORT:6379}
+    password: ${REDIS_PASSWORD:asdf}
 
 jwt:
   header: ${HEADER:Authorization}
