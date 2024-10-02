@@ -33,6 +33,7 @@ public class QuizController {
     private final SolveQuizService solveQuizService;
     private final UpdateQuizService updateQuizService;
     private final DeleteQuizService deleteQuizService;
+    private final QueryBannerQuizService queryBannerQuizService;
 
     @PostMapping
     @Operation(summary = "문제 생성", description = "어드민이 문제를 등록할 때 사용하는 API")
@@ -80,5 +81,16 @@ public class QuizController {
     @Operation(summary = "퀴즈 삭제", description = "문제를 삭제하는 api")
     public void deleteQuiz(@PathVariable("quiz-id") Long quizId) {
         deleteQuizService.execute(quizId);
+    }
+
+    @GetMapping("/banner")
+    @Operation(summary = "배너 조회", description = "웹사이트 상단의 배너 api")
+    public void getBannerQuiz(
+        @RequestParam(value = "beginner", defaultValue = "false") boolean beginner,
+        @RequestParam(value = "recent", defaultValue = "false") boolean recent,
+        @RequestParam(value = "temporary", defaultValue = "false") boolean temporary,
+        @RequestParam(value = "most_solved", defaultValue = "false") boolean mostSolved
+        ) {
+        queryBannerQuizService.execute(beginner, recent, temporary, mostSolved);
     }
 }
