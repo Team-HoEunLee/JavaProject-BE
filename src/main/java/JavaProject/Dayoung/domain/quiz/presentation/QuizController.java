@@ -85,12 +85,12 @@ public class QuizController {
 
     @GetMapping("/banner")
     @Operation(summary = "배너 조회", description = "웹사이트 상단의 배너 api")
-    public void getBannerQuiz(
+    public List<QuizListResponse> getBannerQuiz(
         @RequestParam(value = "beginner", defaultValue = "false") boolean beginner,
         @RequestParam(value = "recent", defaultValue = "false") boolean recent,
         @RequestParam(value = "temporary", defaultValue = "false") boolean temporary,
         @RequestParam(value = "most_solved", defaultValue = "false") boolean mostSolved
         ) {
-        queryBannerQuizService.execute(beginner, recent, temporary, mostSolved);
+        return queryBannerQuizService.execute(beginner, recent, temporary, mostSolved);
     }
 }

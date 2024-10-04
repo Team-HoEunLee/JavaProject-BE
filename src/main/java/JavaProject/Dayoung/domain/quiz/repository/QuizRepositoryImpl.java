@@ -39,6 +39,41 @@ public class QuizRepositoryImpl implements QuizPort {
             .fetch();
     }
 
+    @Override
+    public List<Quiz> queryAllForBeginner() {
+        return queryFactory
+            .selectFrom(quiz)
+            .where(quiz.level.eq(Level.EASY))
+            .fetch();
+    }
+
+    @Override
+    public List<Quiz> queryAllForRecent() {
+        return queryFactory
+            .selectFrom(quiz)
+            .orderBy(quiz.createdAt.desc())
+            .fetch();
+    }
+
+    @Override
+    public List<Quiz> queryAllForTemporary() {
+        return queryFactory
+            .selectFrom(quiz)
+            //임시로 만들어둔 쿼리문입니다
+            .fetch();
+    }
+
+    @Override
+    public List<Quiz> queryAllForMostSolved() {
+        return queryFactory
+            .selectFrom(quiz)
+            .join(solvedQuiz)
+            .groupBy(solvedQuiz.quiz.id)
+            .orderBy(solvedQuiz.count().desc())
+            .limit(15)
+            .fetch();
+    }
+
     private BooleanExpression containsTitle(String title) {
         return title == null ? null : quiz.title.contains(title);
     }
