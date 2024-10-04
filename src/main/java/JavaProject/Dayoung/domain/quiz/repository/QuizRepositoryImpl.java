@@ -67,7 +67,7 @@ public class QuizRepositoryImpl implements QuizPort {
     public List<Quiz> queryAllForMostSolved() {
         return queryFactory
             .selectFrom(quiz)
-            .join(solvedQuiz)
+            .join(solvedQuiz).on(solvedQuiz.quiz.eq(quiz))
             .groupBy(solvedQuiz.quiz.id)
             .orderBy(solvedQuiz.count().desc())
             .limit(15)
