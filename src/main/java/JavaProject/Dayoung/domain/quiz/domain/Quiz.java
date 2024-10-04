@@ -7,6 +7,7 @@ import JavaProject.Dayoung.domain.user.domain.User;
 import lombok.*;
 
 import javax.persistence.*;
+import java.time.LocalDateTime;
 
 @Entity
 @Getter
@@ -40,6 +41,8 @@ public class Quiz {
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "user_id", nullable = false)
     private User user;
+
+    private LocalDateTime createdAt;
 
     public void updateQuiz(String title, String question, Level level, Code code, Area area) {
         this.title = title;
