@@ -1,10 +1,6 @@
 package JavaProject.Dayoung.domain.quiz.service;
 
-
-import JavaProject.Dayoung.domain.area.repository.AreaRepository;
-import JavaProject.Dayoung.domain.code.repository.CodeRepository;
 import JavaProject.Dayoung.domain.quiz.presentation.dto.response.QuizListResponse;
-import JavaProject.Dayoung.domain.quiz.repository.QuizRepository;
 import JavaProject.Dayoung.domain.quiz.repository.port.QuizPort;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
@@ -18,9 +14,6 @@ import java.util.stream.Collectors;
 @Transactional(readOnly = true)
 public class QueryBannerQuizService {
 
-    private final CodeRepository codeRepository;
-    private final AreaRepository areaRepository;
-    private final QuizRepository quizRepository;
     private final QuizPort quizPort;
 
     public List<QuizListResponse> execute(boolean beginner, boolean recent, boolean temporary, boolean mostSolved) {
