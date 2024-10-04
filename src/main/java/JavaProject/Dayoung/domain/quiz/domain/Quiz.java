@@ -38,10 +38,6 @@ public class Quiz {
     @JoinColumn(name = "area_id", nullable = true)
     private Area area;
 
-    @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "user_id", nullable = false)
-    private User user;
-
     private LocalDateTime createdAt;
 
     public void updateQuiz(String title, String question, Level level, Code code, Area area) {
