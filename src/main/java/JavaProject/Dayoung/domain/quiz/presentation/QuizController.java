@@ -3,6 +3,7 @@ package JavaProject.Dayoung.domain.quiz.presentation;
 import JavaProject.Dayoung.domain.area.domain.Area;
 import JavaProject.Dayoung.domain.quiz.domain.type.IsSolved;
 import JavaProject.Dayoung.domain.quiz.domain.type.Level;
+import JavaProject.Dayoung.domain.quiz.domain.type.QuizType;
 import JavaProject.Dayoung.domain.quiz.presentation.dto.request.CreateQuizRequest;
 import JavaProject.Dayoung.domain.quiz.presentation.dto.request.SolveQuizRequest;
 import JavaProject.Dayoung.domain.quiz.presentation.dto.request.UpdateQuizRequest;
@@ -85,12 +86,7 @@ public class QuizController {
 
     @GetMapping("/banner")
     @Operation(summary = "배너 조회", description = "웹사이트 상단의 배너 api")
-    public List<QuizListResponse> getBannerQuiz(
-        @RequestParam(value = "beginner", defaultValue = "false") boolean beginner,
-        @RequestParam(value = "recent", defaultValue = "false") boolean recent,
-        @RequestParam(value = "temporary", defaultValue = "false") boolean temporary,
-        @RequestParam(value = "most_solved", defaultValue = "false") boolean mostSolved
-        ) {
-        return queryBannerQuizService.execute(beginner, recent, temporary, mostSolved);
+    public List<QuizListResponse> getBannerQuiz(@RequestParam(value = "quizType") QuizType quizType) {
+        return queryBannerQuizService.execute(quizType);
     }
 }
