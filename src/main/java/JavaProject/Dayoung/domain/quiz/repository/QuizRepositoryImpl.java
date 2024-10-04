@@ -44,6 +44,7 @@ public class QuizRepositoryImpl implements QuizPort {
         return queryFactory
             .selectFrom(quiz)
             .where(quiz.level.eq(Level.EASY))
+            .limit(15)
             .fetch();
     }
 
@@ -52,6 +53,7 @@ public class QuizRepositoryImpl implements QuizPort {
         return queryFactory
             .selectFrom(quiz)
             .orderBy(quiz.createdAt.desc())
+            .limit(15)
             .fetch();
     }
 
@@ -60,6 +62,7 @@ public class QuizRepositoryImpl implements QuizPort {
         return queryFactory
             .selectFrom(quiz)
             //임시로 만들어둔 쿼리문입니다
+            .limit(15)
             .fetch();
     }
 
