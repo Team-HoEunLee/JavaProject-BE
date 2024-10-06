@@ -88,14 +88,13 @@ public class QuizRepositoryImpl implements QuizPort {
         return levels == null ? null : quiz.level.in(levels);
     }
 
-    private BooleanExpression equalsIsSolved(boolean isSolved) {
-        if (isSolved) {
+    private BooleanExpression equalsIsSolved(Boolean isSolved) {
+        // (isSolved) 방식은 null일 경우, NPE를 발생시키기에 null을 처리해줘야 하기 때문에 Boolean.TRUE를 사용했습니다.
+        if (Boolean.TRUE.equals(isSolved)) {
             return solvedQuiz.quiz.id.eq(quiz.id);
-        } else if (!isSolved) {
+        } else if (Boolean.FALSE.equals(isSolved)) {
             return solvedQuiz.quiz.id.ne(quiz.id);
         }
         return null;
-    } //그냥 true면 푼 문제들 반환 (isSolved에 같은 id가 있는 <- quiz.id로 solvedQuiz.quiz.id가 같은지 확인 후, 그걸 반환) )
-    //false면 안 푼 문제를 반환 (isSolved에 같은 id가 없는 <- 그냥 위에거 반대...)
-    // null이면 전체 반환
-}   //if문으로 처리하는게 좋을듯
+    }
+}
