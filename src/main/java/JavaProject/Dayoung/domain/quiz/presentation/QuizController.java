@@ -1,7 +1,6 @@
 package JavaProject.Dayoung.domain.quiz.presentation;
 
 import JavaProject.Dayoung.domain.area.domain.Area;
-import JavaProject.Dayoung.domain.quiz.domain.type.IsSolved;
 import JavaProject.Dayoung.domain.quiz.domain.type.Level;
 import JavaProject.Dayoung.domain.quiz.domain.type.QuizType;
 import JavaProject.Dayoung.domain.quiz.presentation.dto.request.CreateQuizRequest;
@@ -51,10 +50,10 @@ public class QuizController {
     @GetMapping("/list")
     @Operation(summary = "문제 리스트 조회", description = "카테고리를 사용해 문제리스트를 조회")
     public List<QuizListResponse> getQuizList(
-            @RequestParam(value = "title") String title,
-            @RequestParam(value = "area") List<Area> area,
-            @RequestParam(value = "level") List<Level> level,
-            @RequestParam(value = "is_solved") IsSolved isSolved,
+            @RequestParam(value = "title", required = false) String title,
+            @RequestParam(value = "area", required = false) List<Area> area,
+            @RequestParam(value = "level", required = false) List<Level> level,
+            @RequestParam(value = "is_solved", required = false) boolean isSolved,
             @RequestParam(value = "page", defaultValue = "1") @Positive int page
     ) {
         return queryQuizListService.execute(title, area, level, isSolved, page);

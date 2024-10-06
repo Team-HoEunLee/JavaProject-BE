@@ -1,7 +1,6 @@
 package JavaProject.Dayoung.domain.user.service;
 
 import JavaProject.Dayoung.domain.quiz.domain.SolvedQuiz;
-import JavaProject.Dayoung.domain.quiz.domain.type.IsSolved;
 import JavaProject.Dayoung.domain.quiz.repository.SolvedQuizRepository;
 import JavaProject.Dayoung.domain.user.domain.User;
 import JavaProject.Dayoung.domain.user.facade.UserFacade;
@@ -32,8 +31,8 @@ public class MyInfoService {
 
         int myRank = allUsers.indexOf(currentUser);
 
-        List<SolvedQuiz> unSolvedQuiz = solvedQuizRepository.findAllByUserIdAndIsSolved(currentUser.getId(), IsSolved.FALSE);
-        List<Long> unSolvedQuizIds = unSolvedQuiz.stream()
+        List<SolvedQuiz> solvedQuizzes = solvedQuizRepository.findAllByUserId(currentUser.getId());
+        List<Long> solvedQuizIds = solvedQuizzes.stream()
                 .map(solvedQuiz -> solvedQuiz.getQuiz().getId())
                 .collect(Collectors.toList());
 
@@ -43,7 +42,7 @@ public class MyInfoService {
                 .introduction(currentUser.getIntroduction())
                 .myRank(myRank)
                 .area(currentUser.getArea())
-                .unsolvedQuizIds(unSolvedQuizIds)
+                .unsolvedQuizIds(solvedQuizIds)
                 .build();
     }
 }

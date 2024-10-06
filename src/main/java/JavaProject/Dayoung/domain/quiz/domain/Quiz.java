@@ -3,8 +3,8 @@ package JavaProject.Dayoung.domain.quiz.domain;
 import JavaProject.Dayoung.domain.area.domain.Area;
 import JavaProject.Dayoung.domain.code.domain.Code;
 import JavaProject.Dayoung.domain.quiz.domain.type.Level;
-import JavaProject.Dayoung.domain.user.domain.User;
 import lombok.*;
+import org.hibernate.annotations.CreationTimestamp;
 
 import javax.persistence.*;
 import java.time.LocalDateTime;
@@ -31,13 +31,14 @@ public class Quiz {
     private Level level;
 
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "code_id", nullable = true)
+    @JoinColumn(name = "code_id")
     private Code code;
 
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "area_id", nullable = true)
+    @JoinColumn(name = "area_id")
     private Area area;
 
+    @Column(nullable = false)
     private LocalDateTime createdAt;
 
     public void updateQuiz(String title, String question, Level level, Code code, Area area) {
