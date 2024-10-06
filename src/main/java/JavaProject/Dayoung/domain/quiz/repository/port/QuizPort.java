@@ -9,4 +9,12 @@ public interface QuizPort {
 
     List<Quiz> queryAllByFilter(QuizFilter quizFilter);
 
+    List<Quiz> queryAllForBeginner();
+
+    List<Quiz> queryAllForRecent();
+
+    List<Quiz> queryAllForTemporary();
+
+    List<Quiz> queryAllForMostSolved();
+
 }

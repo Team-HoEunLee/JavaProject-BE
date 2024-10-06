@@ -25,7 +25,4 @@ public class SolvedQuiz {
     @JoinColumn(name = "quiz_id", nullable = false)
     private Quiz quiz;
 
-    @Enumerated(EnumType.STRING)
-    @Column(nullable = false)
-    private IsSolved isSolved;
 }

@@ -3,11 +3,11 @@ package JavaProject.Dayoung.domain.quiz.service;
 import JavaProject.Dayoung.domain.quiz.domain.Quiz;
 import JavaProject.Dayoung.domain.quiz.presentation.dto.request.CreateQuizRequest;
 import JavaProject.Dayoung.domain.quiz.repository.QuizRepository;
-import JavaProject.Dayoung.domain.user.domain.User;
-import JavaProject.Dayoung.domain.user.facade.UserFacade;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+
+import java.time.LocalDateTime;
 
 @Service
 @RequiredArgsConstructor
@@ -15,10 +15,8 @@ import org.springframework.transaction.annotation.Transactional;
 public class CreateQuizService {
 
     private final QuizRepository quizRepository;
-    private final UserFacade userFacade;
 
     public void execute(CreateQuizRequest request) {
-        User user = userFacade.getCurrentUser();
 
         quizRepository.save(Quiz.builder()
                 //.area() 일단 보류
@@ -26,6 +24,7 @@ public class CreateQuizService {
                 .level(request.getLevel())
                 .question(request.getQuestion())
                 .title(request.getTitle())
+                .createdAt(LocalDateTime.now())
                 .build());
     }
 }

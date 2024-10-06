@@ -1,8 +1,8 @@
 package JavaProject.Dayoung.domain.quiz.presentation;
 
 import JavaProject.Dayoung.domain.area.domain.Area;
-import JavaProject.Dayoung.domain.quiz.domain.type.IsSolved;
 import JavaProject.Dayoung.domain.quiz.domain.type.Level;
+import JavaProject.Dayoung.domain.quiz.domain.type.QuizType;
 import JavaProject.Dayoung.domain.quiz.presentation.dto.request.CreateQuizRequest;
 import JavaProject.Dayoung.domain.quiz.presentation.dto.request.SolveQuizRequest;
 import JavaProject.Dayoung.domain.quiz.presentation.dto.request.UpdateQuizRequest;
@@ -33,6 +33,7 @@ public class QuizController {
     private final SolveQuizService solveQuizService;
     private final UpdateQuizService updateQuizService;
     private final DeleteQuizService deleteQuizService;
+    private final QueryBannerQuizService queryBannerQuizService;
 
     @PostMapping
     @Operation(summary = "문제 생성", description = "어드민이 문제를 등록할 때 사용하는 API")
@@ -49,10 +50,10 @@ public class QuizController {
     @GetMapping("/list")
     @Operation(summary = "문제 리스트 조회", description = "카테고리를 사용해 문제리스트를 조회")
     public List<QuizListResponse> getQuizList(
-            @RequestParam(value = "title") String title,
-            @RequestParam(value = "area") List<Area> area,
-            @RequestParam(value = "level") List<Level> level,
-            @RequestParam(value = "is_solved") IsSolved isSolved,
+            @RequestParam(value = "title", required = false) String title,
+            @RequestParam(value = "area", required = false) List<Area> area,
+            @RequestParam(value = "level", required = false) List<Level> level,
+            @RequestParam(value = "is_solved", required = false) boolean isSolved,
             @RequestParam(value = "page", defaultValue = "1") @Positive int page
     ) {
         return queryQuizListService.execute(title, area, level, isSolved, page);
@@ -80,5 +81,11 @@ public class QuizController {
     @Operation(summary = "퀴즈 삭제", description = "문제를 삭제하는 api")
     public void deleteQuiz(@PathVariable("quiz-id") Long quizId) {
         deleteQuizService.execute(quizId);
+    }
+
+    @GetMapping("/banner")
+    @Operation(summary = "배너 조회", description = "웹사이트 상단의 배너 api")
+    public List<QuizListResponse> getBannerQuiz(@RequestParam(value = "quizType") QuizType quizType) {
+        return queryBannerQuizService.execute(quizType);
     }
 }

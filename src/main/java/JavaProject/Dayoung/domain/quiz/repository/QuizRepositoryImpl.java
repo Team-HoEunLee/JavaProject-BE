@@ -3,7 +3,6 @@ package JavaProject.Dayoung.domain.quiz.repository;
 
 import JavaProject.Dayoung.domain.area.domain.Area;
 import JavaProject.Dayoung.domain.quiz.domain.Quiz;
-import JavaProject.Dayoung.domain.quiz.domain.type.IsSolved;
 import JavaProject.Dayoung.domain.quiz.domain.type.Level;
 import JavaProject.Dayoung.domain.quiz.presentation.dto.request.QuizFilter;
 import JavaProject.Dayoung.domain.quiz.repository.port.QuizPort;
@@ -32,10 +31,48 @@ public class QuizRepositoryImpl implements QuizPort {
             .where(containsTitle(filter.getTitle()),
                 containsArea(filter.getAreas()),
                 containsLevel(filter.getLevels()),
-                equalsIsSolved(filter.getIsSolved()))
+                equalsIsSolved(filter.isSolved()))
             .orderBy(quiz.id.asc())
             .offset(filter.getOffset())
             .limit(filter.getLimit())
+            .fetch();
+    }
+
+    @Override
+    public List<Quiz> queryAllForBeginner() {
+        return queryFactory
+            .selectFrom(quiz)
+            .where(quiz.level.eq(Level.EASY))
+            .limit(15)
+            .fetch();
+    }
+
+    @Override
+    public List<Quiz> queryAllForRecent() {
+        return queryFactory
+            .selectFrom(quiz)
+            .orderBy(quiz.createdAt.desc())
+            .limit(15)
+            .fetch();
+    }
+
+    @Override
+    public List<Quiz> queryAllForTemporary() {
+        return queryFactory
+            .selectFrom(quiz)
+            //임시로 만들어둔 쿼리문입니다
+            .limit(15)
+            .fetch();
+    }
+
+    @Override
+    public List<Quiz> queryAllForMostSolved() {
+        return queryFactory
+            .selectFrom(quiz)
+            .join(solvedQuiz).on(solvedQuiz.quiz.eq(quiz))
+            .groupBy(solvedQuiz.quiz.id)
+            .orderBy(solvedQuiz.count().desc())
+            .limit(15)
             .fetch();
     }
 
@@ -51,8 +88,13 @@ public class QuizRepositoryImpl implements QuizPort {
         return levels == null ? null : quiz.level.in(levels);
     }
 
-    private BooleanExpression equalsIsSolved(IsSolved isSolved) {
-        return isSolved == null ? null : solvedQuiz.isSolved.in(isSolved);
+    private BooleanExpression equalsIsSolved(Boolean isSolved) {
+        // (isSolved) 방식은 null일 경우, NPE를 발생시키기에 null을 처리해줘야 하기 때문에 Boolean.TRUE를 사용했습니다.
+        if (Boolean.TRUE.equals(isSolved)) {
+            return solvedQuiz.quiz.id.eq(quiz.id);
+        } else if (Boolean.FALSE.equals(isSolved)) {
+            return solvedQuiz.quiz.id.ne(quiz.id);
+        }
+        return null;
     }
-
 }
