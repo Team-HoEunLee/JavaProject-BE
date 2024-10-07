@@ -1,6 +1,5 @@
 package JavaProject.Dayoung.domain.quiz.domain;
 
-import JavaProject.Dayoung.domain.quiz.domain.type.IsSolved;
 import JavaProject.Dayoung.domain.user.domain.User;
 import lombok.*;
 
