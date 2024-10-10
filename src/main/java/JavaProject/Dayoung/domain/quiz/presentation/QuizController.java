@@ -67,8 +67,10 @@ public class QuizController {
 
     @PostMapping("solve")
     @Operation(summary = "퀴즈 풀기", description = "문제를 풀면 AI가 문제의 답변을 반환합니다.")
-    public Map<String, String> solveQuiz(@RequestBody SolveQuizRequest request) {
-        return solveQuizService.execute(request);
+    public Map<String, String> solveQuiz(
+        @RequestParam(value = "quiz_id") Long quizId,
+        @RequestBody SolveQuizRequest request) {
+        return solveQuizService.execute(quizId, request);
     }
 
     @PatchMapping("/{quiz-id}")

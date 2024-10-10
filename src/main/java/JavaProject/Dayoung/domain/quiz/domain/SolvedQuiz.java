@@ -24,4 +24,5 @@ public class SolvedQuiz {
     @JoinColumn(name = "quiz_id", nullable = false)
     private Quiz quiz;
 
+    private Long receivedScore;
 }

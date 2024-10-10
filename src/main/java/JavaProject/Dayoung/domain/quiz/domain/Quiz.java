@@ -4,10 +4,10 @@ import JavaProject.Dayoung.domain.area.domain.Area;
 import JavaProject.Dayoung.domain.code.domain.Code;
 import JavaProject.Dayoung.domain.quiz.domain.type.Level;
 import lombok.*;
-import org.hibernate.annotations.CreationTimestamp;
 
 import javax.persistence.*;
 import java.time.LocalDateTime;
+import java.util.List;
 
 @Entity
 @Getter
@@ -30,18 +30,18 @@ public class Quiz {
     @Column(nullable = false)
     private Level level;
 
-    @ManyToOne(fetch = FetchType.LAZY)
+    @OneToMany(fetch = FetchType.LAZY)
     @JoinColumn(name = "code_id")
-    private Code code;
+    private List<Code> code; //기술 스택
 
-    @ManyToOne(fetch = FetchType.LAZY)
+    @OneToMany(fetch = FetchType.LAZY)
     @JoinColumn(name = "area_id")
-    private Area area;
+    private List<Area> area; // 분야
 
     @Column(nullable = false)
     private LocalDateTime createdAt;
 
-    public void updateQuiz(String title, String question, Level level, Code code, Area area) {
+    public void updateQuiz(String title, String question, Level level, List<Code> code, List<Area> area) {
         this.title = title;
         this.question = question;
         this.level = level;
