@@ -6,6 +6,8 @@ import JavaProject.Dayoung.domain.quiz.domain.type.Level;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 
+import java.util.List;
+
 @Getter
 @NoArgsConstructor
 public class UpdateQuizRequest {
@@ -16,7 +18,7 @@ public class UpdateQuizRequest {
 
     private Level level;
 
-    private Code code;
+    private List<Code> codes;
 
-    private Area area;
+    private List<Area> areas;
 }
