@@ -11,7 +11,7 @@ import javax.validation.constraints.NotNull;
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
 public class SignupRequest {
 
-    @NotNull(message = "닉네임을 입력하세요")
+    @NotNull(message = "아이디을 입력하세요")
     private String accountId;
 
     @NotNull(message = "이메일을 입력하세요")

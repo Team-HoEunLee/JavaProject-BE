@@ -9,7 +9,7 @@ import java.util.List;
 
 public interface QuizRepository extends JpaRepository<Quiz, Long> {
 
-    List<Quiz> findAllByTitleContainingAndAreaInAndLevelIn(String title, List<Area> area, List<Level> level);
+    List<Quiz> findAllByTitleAndAreaInAndLevelIn(String title, List<Area> area, List<Level> level);
 
     Quiz findQuizById(Long id);
 

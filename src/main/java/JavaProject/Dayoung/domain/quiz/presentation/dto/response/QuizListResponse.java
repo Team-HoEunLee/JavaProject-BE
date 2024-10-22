@@ -6,6 +6,8 @@ import JavaProject.Dayoung.domain.quiz.domain.type.Level;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 
+import java.util.List;
+
 @Getter
 @AllArgsConstructor
 public class QuizListResponse {
@@ -16,7 +18,7 @@ public class QuizListResponse {
 
     private final String question;
 
-    private final Area area;
+    private final List<Area> area;
 
     private final Level level;
 
