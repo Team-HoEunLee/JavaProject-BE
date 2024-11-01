@@ -14,7 +14,7 @@ public class QuizFilter {
     private final String title;
     private final List<Area> areas;
     private final List<Level> levels;
-    private final boolean isSolved;
+    private final Boolean isSolved;
     private final int page;
     @Builder.Default
     private int limit = 15;

@@ -53,7 +53,7 @@ public class QuizController {
             @RequestParam(value = "title", required = false) String title,
             @RequestParam(value = "area", required = false) List<Area> area,
             @RequestParam(value = "level", required = false) List<Level> level,
-            @RequestParam(value = "is_solved", required = false) boolean isSolved,
+            @RequestParam(value = "is_solved", required = false) Boolean isSolved,
             @RequestParam(value = "page", defaultValue = "1") @Positive int page
     ) {
         return queryQuizListService.execute(title, area, level, isSolved, page);

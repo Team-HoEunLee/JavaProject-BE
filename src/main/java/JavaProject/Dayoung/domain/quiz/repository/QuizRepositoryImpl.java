@@ -31,7 +31,7 @@ public class QuizRepositoryImpl implements QuizPort {
             .where(containsTitle(filter.getTitle()),
                 containsArea(filter.getAreas()),
                 containsLevel(filter.getLevels()),
-                equalsIsSolved(filter.isSolved()))
+                equalsIsSolved(filter.getIsSolved()))
             .orderBy(quiz.id.asc())
             .offset(filter.getOffset())
             .limit(filter.getLimit())

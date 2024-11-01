@@ -19,7 +19,7 @@ public class QueryQuizListService {
 
     private final QuizPort quizPort;
 
-    public QuizListResponse execute(String title, List<Area> area, List<Level> level, boolean isSolved, int page) {
+    public QuizListResponse execute(String title, List<Area> area, List<Level> level, Boolean isSolved, int page) {
 
         QuizFilter filter = QuizFilter.builder()
             .title(title)
