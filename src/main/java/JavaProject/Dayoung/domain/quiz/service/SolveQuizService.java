@@ -26,6 +26,7 @@ public class SolveQuizService {
     private final TemplateConfig templateConfig;
     private final QuizRepository quizRepository;
     private final SolvedQuizRepository solvedQuizRepository;
+    private final UserAreaSolvedService userAreaSolvedService;
 
     public Map<String, String> execute(Long quizId, SolveQuizRequest request) {
 
@@ -44,11 +45,13 @@ public class SolveQuizService {
         result.put("피드백", feedback);
 
         solvedQuizRepository.save(SolvedQuiz.builder()
-            .user(userFacade.getCurrentUser())
-            .quiz(quiz)
-            .receivedScore(Long.valueOf(correctRate))
-        .build());
+                .user(userFacade.getCurrentUser())
+                .quiz(quiz)
+                .receivedScore(Long.valueOf(correctRate))
+                .build());
 
+//        SolvedQuiz solvedQuiz
+//                = userAreaSolvedService.updateUserAreaSolved(solvedQuiz);
         return result;
     }
 }
