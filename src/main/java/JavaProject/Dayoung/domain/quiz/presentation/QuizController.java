@@ -49,7 +49,7 @@ public class QuizController {
 
     @GetMapping("/list")
     @Operation(summary = "문제 리스트 조회", description = "카테고리를 사용해 문제리스트를 조회")
-    public List<QuizListResponse> getQuizList(
+    public QuizListResponse getQuizList(
             @RequestParam(value = "title", required = false) String title,
             @RequestParam(value = "area", required = false) List<Area> area,
             @RequestParam(value = "level", required = false) List<Level> level,
