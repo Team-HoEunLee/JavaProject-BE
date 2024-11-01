@@ -87,7 +87,7 @@ public class QuizController {
 
     @GetMapping("/banner")
     @Operation(summary = "배너 조회", description = "웹사이트 상단의 배너 api")
-    public List<QuizListResponse> getBannerQuiz(@RequestParam(value = "quizType") QuizType quizType) {
+    public QuizListResponse getBannerQuiz(@RequestParam(value = "quizType") QuizType quizType) {
         return queryBannerQuizService.execute(quizType);
     }
 }

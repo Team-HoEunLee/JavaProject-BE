@@ -18,19 +18,22 @@ public class QueryBannerQuizService {
 
     private final QuizPort quizPort;
 
-    public List<QuizListResponse> execute(QuizType quizType) {
+    public QuizListResponse execute(QuizType quizType) {
         List<Quiz> quizzes = switch (quizType) {
             case BEGINNER -> quizPort.queryAllForBeginner();
             case RECENT -> quizPort.queryAllForRecent();
             case TEMPORARY -> quizPort.queryAllForTemporary();
             case MOST_SOLVED -> quizPort.queryAllForMostSolved();
         };
-        return convertToQuizListResponse(quizzes);
+
+        List<QuizListResponse.QuizResponse> quizList = convertToQuizListResponse(quizzes);
+
+        return new QuizListResponse(quizList);
     }
 
-    private List<QuizListResponse> convertToQuizListResponse(List<Quiz> quizzes) {
+    private List<QuizListResponse.QuizResponse> convertToQuizListResponse(List<Quiz> quizzes) {
         return quizzes.stream()
-            .map(QuizListResponse::new)
+            .map(QuizListResponse.QuizResponse::from)
             .collect(Collectors.toList());
     }
 }
