@@ -7,7 +7,6 @@ import lombok.Getter;
 
 @Getter
 @Builder
-//@NoArgsConstructor(force = true)
 @AllArgsConstructor
 public class UserAreaSolvedResponse {
 
