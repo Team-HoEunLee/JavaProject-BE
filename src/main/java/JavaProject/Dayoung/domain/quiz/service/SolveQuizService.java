@@ -21,7 +21,6 @@ import java.util.Map;
 @Transactional
 @RequiredArgsConstructor
 public class SolveQuizService {
-
     private final UserFacade userFacade;
     private final TemplateConfig templateConfig;
     private final QuizRepository quizRepository;
@@ -29,29 +28,28 @@ public class SolveQuizService {
     private final UserAreaSolvedService userAreaSolvedService;
 
     public Map<String, String> execute(Long quizId, SolveQuizRequest request) {
-
         Quiz quiz = quizRepository.findQuizById(quizId);
 
         ChatGPTRequest gptRequest = templateConfig.promptMapping(quiz.getQuestion(), request);
         ResponseEntity<ChatGPTResponse> gptResponse = templateConfig.responseMapping(gptRequest);
 
         String responseContent = gptResponse.getBody().getChoices().get(0).getMessage().getContent();
-
         String correctRate = templateConfig.correctRateMatcher(responseContent);
         String feedback = templateConfig.feedbackMatcher(responseContent);
 
-        Map<String, String> result = new HashMap<>();
-        result.put("정답률", correctRate);
-        result.put("피드백", feedback);
-
-        solvedQuizRepository.save(SolvedQuiz.builder()
+        SolvedQuiz solvedQuiz = solvedQuizRepository.save(SolvedQuiz.builder()
                 .user(userFacade.getCurrentUser())
                 .quiz(quiz)
                 .receivedScore(Long.valueOf(correctRate))
                 .build());
 
-//        SolvedQuiz solvedQuiz
-//                = userAreaSolvedService.updateUserAreaSolved(solvedQuiz);
+        // 분야별 통계 업데이트
+        userAreaSolvedService.updateUserAreaSolved(solvedQuiz);
+
+        Map<String, String> result = new HashMap<>();
+        result.put("정답률", correctRate);
+        result.put("피드백", feedback);
+
         return result;
     }
 }
