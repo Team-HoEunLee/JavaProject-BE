@@ -77,12 +77,12 @@ public class QuizRepositoryImpl implements QuizPort {
     }
 
     private BooleanExpression containsTitle(String title) {
-        return title == null ? null : quiz.title.contains(title);
+        return title == null || title.isEmpty() ? null : quiz.title.contains(title);
     }
 
     private BooleanExpression containsArea(List<Area> areas) {
         //return areas == null ? null : quiz.area.in(areas);
-        return areas == null ? null : quiz.area.contains((Area) areas);
+        return areas == null || areas.isEmpty() ? null : quiz.area.contains((Area) areas);
     }
 
     private BooleanExpression containsLevel(List<Level> levels) {
