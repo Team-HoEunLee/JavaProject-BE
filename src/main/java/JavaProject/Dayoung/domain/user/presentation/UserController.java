@@ -41,8 +41,8 @@ public class UserController {
 
     @PostMapping("/signup")
     @Operation(summary = "유저 회원가입", description = "회원가입 할 때 사용하는 API")
-    public TokenResponse signup(@RequestBody @Valid SignupRequest request) {
-        return signupService.execute(request);
+    public void signup(@RequestBody @Valid SignupRequest request) {
+        signupService.signUp(request);
     }
 
     @PostMapping("/login")

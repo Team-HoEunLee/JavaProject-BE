@@ -14,9 +14,6 @@ public class SignupRequest {
     @NotNull(message = "아이디을 입력하세요")
     private String accountId;
 
-    @NotNull(message = "이메일을 입력하세요")
-    private String email;
-
     @NotNull(message = "비밀번호를 입력하세요")
     private String password;
 
@@ -28,5 +25,4 @@ public class SignupRequest {
 
     @Nullable
     private Long areaId;
-
 }

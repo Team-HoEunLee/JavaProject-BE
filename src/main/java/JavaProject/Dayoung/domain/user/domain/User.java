@@ -20,9 +20,6 @@ public class User {
     @Column(columnDefinition = "varchar(30)", nullable = false, unique = true)
     private String accountId;
 
-    @Column(columnDefinition = "varchar(30)", nullable = false)
-    private String email;
-
     @Column(columnDefinition = "varchar(100)", nullable = false)
     private String password;
 

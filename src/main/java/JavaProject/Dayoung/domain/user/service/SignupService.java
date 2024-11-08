@@ -7,8 +7,6 @@ import JavaProject.Dayoung.domain.user.domain.type.Role;
 import JavaProject.Dayoung.domain.user.exception.UserAlreadyExistException;
 import JavaProject.Dayoung.domain.user.presentation.dto.request.SignupRequest;
 import JavaProject.Dayoung.domain.user.repository.UserRepository;
-import JavaProject.Dayoung.global.security.TokenResponse;
-import JavaProject.Dayoung.global.security.jwt.JwtTokenProvider;
 import lombok.RequiredArgsConstructor;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
@@ -22,9 +20,8 @@ public class SignupService {
     private final UserRepository userRepository;
     private final AreaRepository areaRepository;
     private final PasswordEncoder passwordEncoder;
-    private final JwtTokenProvider jwtTokenProvider;
 
-    public TokenResponse execute(SignupRequest signupRequest) {
+    public void signUp(SignupRequest signupRequest) {
 
         if (userRepository.existsByAccountId(signupRequest.getAccountId())) {
             throw UserAlreadyExistException.EXCEPTION;
@@ -36,32 +33,28 @@ public class SignupService {
             Area area = areaRepository.findAreaById(signupRequest.getAreaId());
 
             userRepository.save(
-                User.builder()
-                    .accountId(signupRequest.getAccountId())
-                    .email(signupRequest.getEmail())
-                    .password(password)
-                    .name(signupRequest.getName())
-                    .introduction(signupRequest.getIntroduction())
-                    .area(area)
-                    .role(Role.STUDENT)
-                    .score(0)
-                    .build()
+                    User.builder()
+                            .accountId(signupRequest.getAccountId())
+                            .password(password)
+                            .name(signupRequest.getName())
+                            .introduction(signupRequest.getIntroduction())
+                            .area(area)
+                            .role(Role.STUDENT)
+                            .score(0)
+                            .build()
             );
         } else {
             userRepository.save(
-                User.builder()
-                    .accountId(signupRequest.getAccountId())
-                    .email(signupRequest.getEmail())
-                    .password(password)
-                    .name(signupRequest.getName())
-                    .introduction(signupRequest.getIntroduction())
-                    .area(null)
-                    .role(Role.STUDENT)
-                    .score(0)
-                    .build()
+                    User.builder()
+                            .accountId(signupRequest.getAccountId())
+                            .password(password)
+                            .name(signupRequest.getName())
+                            .introduction(signupRequest.getIntroduction())
+                            .area(null)
+                            .role(Role.STUDENT)
+                            .score(0)
+                            .build()
             );
         }
-
-        return jwtTokenProvider.createToken(signupRequest.getAccountId());
     }
 }
