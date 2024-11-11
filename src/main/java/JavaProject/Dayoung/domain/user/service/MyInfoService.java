@@ -41,7 +41,7 @@ public class MyInfoService {
                 .name(currentUser.getName())
                 .introduction(currentUser.getIntroduction())
                 .myRank(myRank)
-                .area(currentUser.getArea())
+                .area(currentUser.getAreaIds())
                 .unsolvedQuizIds(solvedQuizIds)
                 .build();
     }

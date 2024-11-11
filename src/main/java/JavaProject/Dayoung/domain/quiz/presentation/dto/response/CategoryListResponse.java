@@ -11,7 +11,8 @@ import java.util.List;
 @AllArgsConstructor
 public class CategoryListResponse {
 
-    private List<Code> codes;
+    private List<Code> codeIds;
 
-    private List<Area> areas;
+    private List<Area> areaIds;
+
 }

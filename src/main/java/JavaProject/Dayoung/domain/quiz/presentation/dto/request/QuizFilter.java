@@ -12,7 +12,7 @@ import java.util.List;
 public class QuizFilter {
 
     private final String title;
-    private final List<Area> areas;
+    private final List<Long> areaIds;
     private final List<Level> levels;
     private final Boolean isSolved;
     private final int page;

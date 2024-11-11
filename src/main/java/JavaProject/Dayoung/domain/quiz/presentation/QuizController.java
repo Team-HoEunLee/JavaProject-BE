@@ -51,12 +51,12 @@ public class QuizController {
     @Operation(summary = "문제 리스트 조회", description = "카테고리를 사용해 문제리스트를 조회")
     public QuizListResponse getQuizList(
             @RequestParam(value = "title", required = false) String title,
-            @RequestParam(value = "area", required = false) List<Area> area,
+            @RequestParam(value = "area_ids", required = false) List<Long> areaIds,
             @RequestParam(value = "level", required = false) List<Level> level,
             @RequestParam(value = "is_solved", required = false) Boolean isSolved,
             @RequestParam(value = "page", defaultValue = "1") @Positive int page
     ) {
-        return queryQuizListService.execute(title, area, level, isSolved, page);
+        return queryQuizListService.execute(title, areaIds, level, isSolved, page);
     }
 
     @GetMapping("/category")

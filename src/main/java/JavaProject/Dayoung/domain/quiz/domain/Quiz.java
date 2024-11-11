@@ -1,12 +1,12 @@
 package JavaProject.Dayoung.domain.quiz.domain;
 
-import JavaProject.Dayoung.domain.area.domain.Area;
-import JavaProject.Dayoung.domain.code.domain.Code;
 import JavaProject.Dayoung.domain.quiz.domain.type.Level;
+import JavaProject.Dayoung.global.StringListConverter;
 import lombok.*;
 
 import javax.persistence.*;
 import java.time.LocalDateTime;
+import java.util.ArrayList;
 import java.util.List;
 
 @Entity
@@ -30,22 +30,20 @@ public class Quiz {
     @Column(nullable = false)
     private Level level;
 
-    @OneToMany(fetch = FetchType.LAZY)
-    @JoinColumn(name = "code_id")
-    private List<Code> code; //기술 스택
+    @Convert(converter = StringListConverter.class)
+    private List<Long> codeIds = new ArrayList<>(); //기술 스택
 
-    @OneToMany(fetch = FetchType.LAZY)
-    @JoinColumn(name = "area_id")
-    private List<Area> area; // 분야
+    @Convert(converter = StringListConverter.class)
+    private List<Long> areaIds = new ArrayList<>(); // 분야
 
     @Column(nullable = false)
     private LocalDateTime createdAt;
 
-    public void updateQuiz(String title, String question, Level level, List<Code> code, List<Area> area) {
+    public void updateQuiz(String title, String question, Level level, List<Long> codeIds, List<Long> areaIds) {
         this.title = title;
         this.question = question;
         this.level = level;
-        this.code = code;
-        this.area = area;
+        this.codeIds = codeIds;
+        this.areaIds = areaIds;
     }
 }

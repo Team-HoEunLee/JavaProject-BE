@@ -21,16 +21,16 @@ public class QuizDetailResponse {
 
     private final Level level;
 
-    private final List<Area> areas;
+    private final List<Long> areas;
 
-    private final List<Code> codes;
+    private final List<Long> codes;
 
     public QuizDetailResponse(Quiz quiz) {
         quizId = quiz.getId();
         title = quiz.getTitle();
         question = quiz.getQuestion();
         level = quiz.getLevel();
-        areas = quiz.getArea();
-        codes = quiz.getCode();
+        areas = quiz.getAreaIds();
+        codes = quiz.getCodeIds();
     }
 }

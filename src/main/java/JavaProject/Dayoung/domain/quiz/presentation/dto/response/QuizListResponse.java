@@ -1,6 +1,5 @@
 package JavaProject.Dayoung.domain.quiz.presentation.dto.response;
 
-import JavaProject.Dayoung.domain.area.domain.Area;
 import JavaProject.Dayoung.domain.quiz.domain.Quiz;
 import JavaProject.Dayoung.domain.quiz.domain.type.Level;
 import lombok.AllArgsConstructor;
@@ -25,7 +24,7 @@ public class QuizListResponse {
 
         private final String question;
 
-        private final List<Area> area;
+        private final List<Long> areaIds;
 
         private final Level level;
 
@@ -36,7 +35,7 @@ public class QuizListResponse {
                 .quizId(quiz.getId())
                 .title(quiz.getTitle())
                 .question(quiz.getQuestion())
-                .area(quiz.getArea())
+                .areaIds(quiz.getAreaIds())
                 .level(quiz.getLevel())
                 .avgScore(0)
                 .build();

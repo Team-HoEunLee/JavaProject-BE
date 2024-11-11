@@ -1,6 +1,5 @@
 package JavaProject.Dayoung.domain.quiz.presentation.dto.request;
 
-import JavaProject.Dayoung.domain.area.domain.Area;
 import JavaProject.Dayoung.domain.code.domain.Code;
 import JavaProject.Dayoung.domain.quiz.domain.type.Level;
 import lombok.Getter;
@@ -25,7 +24,7 @@ public class CreateQuizRequest {
     @NotNull(message = "난이도를 선택해주세요")
     private Level level;
 
-    private List<Area> areas;
+    private List<Long> areaIds;
 
-    private List<Code> codes;
+    private List<Long> codeIds;
 }

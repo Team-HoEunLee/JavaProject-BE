@@ -15,6 +15,7 @@ public class QueryQuizDetailService {
     private final QuizRepository quizRepository;
 
     public QuizDetailResponse execute(Long id) {
+
         Quiz quiz = quizRepository.findQuizById(id);
         return new QuizDetailResponse(quiz);
     }

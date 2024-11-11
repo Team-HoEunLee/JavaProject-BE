@@ -6,6 +6,7 @@ import JavaProject.Dayoung.domain.quiz.domain.Quiz;
 import JavaProject.Dayoung.domain.quiz.domain.type.Level;
 import JavaProject.Dayoung.domain.quiz.presentation.dto.request.QuizFilter;
 import JavaProject.Dayoung.domain.quiz.repository.port.QuizPort;
+import com.querydsl.core.types.Expression;
 import com.querydsl.core.types.dsl.BooleanExpression;
 import com.querydsl.jpa.impl.JPAQueryFactory;
 import lombok.RequiredArgsConstructor;
@@ -29,7 +30,7 @@ public class QuizRepositoryImpl implements QuizPort {
             .join(solvedQuiz)
             .on(solvedQuiz.id.eq(quiz.id))
             .where(containsTitle(filter.getTitle()),
-                containsArea(filter.getAreas()),
+                containsArea(filter.getAreaIds()),
                 containsLevel(filter.getLevels()),
                 equalsIsSolved(filter.getIsSolved()))
             .orderBy(quiz.id.asc())
@@ -80,9 +81,9 @@ public class QuizRepositoryImpl implements QuizPort {
         return title == null || title.isEmpty() ? null : quiz.title.contains(title);
     }
 
-    private BooleanExpression containsArea(List<Area> areas) {
+    private BooleanExpression containsArea(List<Long> areaIds) {
         //return areas == null ? null : quiz.area.in(areas);
-        return areas == null || areas.isEmpty() ? null : quiz.area.contains((Area) areas);
+        return areaIds == null || areaIds.isEmpty() ? null : quiz.areaIds.contains((Expression<Long>) areaIds);
     }
 
     private BooleanExpression containsLevel(List<Level> levels) {

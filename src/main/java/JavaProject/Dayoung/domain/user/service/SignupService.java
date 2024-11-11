@@ -12,6 +12,9 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.util.Collections;
+import java.util.List;
+
 @Service
 @RequiredArgsConstructor
 @Transactional
@@ -33,27 +36,29 @@ public class SignupService {
             Area area = areaRepository.findAreaById(signupRequest.getAreaId());
 
             userRepository.save(
-                    User.builder()
-                            .accountId(signupRequest.getAccountId())
-                            .password(password)
-                            .name(signupRequest.getName())
-                            .introduction(signupRequest.getIntroduction())
-                            .area(area)
-                            .role(Role.STUDENT)
-                            .score(0)
-                            .build()
+                User.builder()
+                    .accountId(signupRequest.getAccountId())
+                    .email(signupRequest.getEmail())
+                    .password(password)
+                    .name(signupRequest.getName())
+                    .introduction(signupRequest.getIntroduction())
+                    .areaIds(Collections.singletonList(signupRequest.getAreaId()))
+                    .role(Role.STUDENT)
+                    .score(0)
+                    .build()
             );
         } else {
             userRepository.save(
-                    User.builder()
-                            .accountId(signupRequest.getAccountId())
-                            .password(password)
-                            .name(signupRequest.getName())
-                            .introduction(signupRequest.getIntroduction())
-                            .area(null)
-                            .role(Role.STUDENT)
-                            .score(0)
-                            .build()
+                User.builder()
+                    .accountId(signupRequest.getAccountId())
+                    .email(signupRequest.getEmail())
+                    .password(password)
+                    .name(signupRequest.getName())
+                    .introduction(signupRequest.getIntroduction())
+                    .areaIds(null)
+                    .role(Role.STUDENT)
+                    .score(0)
+                    .build()
             );
         }
     }

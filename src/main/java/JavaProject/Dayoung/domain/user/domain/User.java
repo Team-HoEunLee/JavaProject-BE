@@ -1,10 +1,12 @@
 package JavaProject.Dayoung.domain.user.domain;
 
-import JavaProject.Dayoung.domain.area.domain.Area;
 import JavaProject.Dayoung.domain.user.domain.type.Role;
+import JavaProject.Dayoung.global.StringListConverter;
 import lombok.*;
 
 import javax.persistence.*;
+import java.util.ArrayList;
+import java.util.List;
 
 @Entity
 @Getter
@@ -29,9 +31,8 @@ public class User {
     @Column(columnDefinition = "varchar(500)")
     private String introduction;
 
-    @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "area_id")
-    private Area area;
+    @Convert(converter = StringListConverter.class)
+    private List<Long> areaIds = new ArrayList<>();
 
     @Enumerated(EnumType.STRING)
     @Column(nullable = false)
@@ -39,10 +40,10 @@ public class User {
 
     private Integer score;
 
-    public void modifyInfo(String accountId, String name, Area area, String introduction) {
+    public void modifyInfo(String accountId, String name, List<Long> areaIds, String introduction) {
         this.accountId = accountId;
         this.name = name;
-        this.area = area;
+        this.areaIds = areaIds;
         this.introduction = introduction;
     }
 

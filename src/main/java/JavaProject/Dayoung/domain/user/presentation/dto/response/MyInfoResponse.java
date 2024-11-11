@@ -22,7 +22,7 @@ public class MyInfoResponse {
 
     private int myRank;
 
-    private Area area;
+    private List<Long> area;
 
     private List<Long> unsolvedQuizIds;
 }

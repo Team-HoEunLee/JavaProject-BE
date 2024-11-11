@@ -17,7 +17,6 @@ import org.springframework.web.bind.annotation.*;
 import javax.validation.Valid;
 import javax.validation.constraints.NotNull;
 
-
 @Validated
 //@Valid는 기본적으로 컨트롤러에서만 동작하며 기본적으로 다른 계층에서는 검증이 되지 않는다
 //[@Validated]
@@ -63,7 +62,7 @@ public class UserController {
         return myInfoService.execute();
     }
 
-    @PatchMapping
+    @PatchMapping //이거 수정해야함
     @Operation(summary = "유저 정보 수정", description = "유저 정보 수정 할 때 사용하는 API")
     public void modifyInfo(@RequestBody @Valid UpdateUserInfoRequest request) {
         updateUserInfoService.execute(request);

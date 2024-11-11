@@ -6,6 +6,7 @@ import lombok.NoArgsConstructor;
 import reactor.util.annotation.Nullable;
 
 import javax.validation.constraints.NotNull;
+import java.util.List;
 
 @Getter
 @NoArgsConstructor(access = AccessLevel.PROTECTED)

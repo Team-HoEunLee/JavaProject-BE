@@ -19,8 +19,8 @@ public class CreateQuizService {
     public void execute(CreateQuizRequest request) {
 
         quizRepository.save(Quiz.builder()
-                .code(request.getCodes())
-                .area(request.getAreas())
+                .codeIds(request.getCodeIds())
+                .areaIds(request.getAreaIds())
                 .level(request.getLevel())
                 .question(request.getQuestion())
                 .title(request.getTitle())

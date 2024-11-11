@@ -1,9 +1,9 @@
 package JavaProject.Dayoung.domain.user.presentation.dto.request;
 
-import JavaProject.Dayoung.domain.area.domain.Area;
-import JavaProject.Dayoung.domain.code.domain.Code;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
+
+import java.util.List;
 
 @Getter
 @NoArgsConstructor
@@ -13,9 +13,7 @@ public class UpdateUserInfoRequest {
 
     private String name;
 
-    private Area area;
+    private List<Long> areaIds;
 
     private String introduction;
-
-    private Code code;
 }
