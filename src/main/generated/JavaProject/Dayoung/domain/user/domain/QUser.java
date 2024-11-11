@@ -24,8 +24,6 @@ public class QUser extends EntityPathBase<User> {
 
     public final ListPath<Long, NumberPath<Long>> areaIds = this.<Long, NumberPath<Long>>createList("areaIds", Long.class, NumberPath.class, PathInits.DIRECT2);
 
-    public final StringPath email = createString("email");
-
     public final NumberPath<Long> id = createNumber("id", Long.class);
 
     public final StringPath introduction = createString("introduction");

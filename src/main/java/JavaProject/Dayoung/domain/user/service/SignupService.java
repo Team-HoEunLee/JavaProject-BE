@@ -38,7 +38,6 @@ public class SignupService {
             userRepository.save(
                 User.builder()
                     .accountId(signupRequest.getAccountId())
-                    .email(signupRequest.getEmail())
                     .password(password)
                     .name(signupRequest.getName())
                     .introduction(signupRequest.getIntroduction())
@@ -51,7 +50,6 @@ public class SignupService {
             userRepository.save(
                 User.builder()
                     .accountId(signupRequest.getAccountId())
-                    .email(signupRequest.getEmail())
                     .password(password)
                     .name(signupRequest.getName())
                     .introduction(signupRequest.getIntroduction())

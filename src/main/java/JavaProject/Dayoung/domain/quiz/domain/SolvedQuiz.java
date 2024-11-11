@@ -2,6 +2,7 @@ package JavaProject.Dayoung.domain.quiz.domain;
 
 import JavaProject.Dayoung.domain.user.domain.User;
 import lombok.*;
+import org.hibernate.annotations.ColumnDefault;
 
 import javax.persistence.*;
 
@@ -25,4 +26,10 @@ public class SolvedQuiz {
     private Quiz quiz;
 
     private Long receivedScore;
+
+    private Long solvedCount;
+
+    public void incrementSolvedCount() {
+        this.solvedCount++;
+    }
 }

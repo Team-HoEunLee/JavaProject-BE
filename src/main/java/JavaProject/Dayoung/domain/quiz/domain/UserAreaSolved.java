@@ -33,8 +33,4 @@ public class UserAreaSolved {
     @Column(nullable = false)
     private Long solvedCount;
 
-    // 카운트를 증가시키는 메서드
-    public void incrementSolvedCount() {
-        this.solvedCount++;
-    }
 }

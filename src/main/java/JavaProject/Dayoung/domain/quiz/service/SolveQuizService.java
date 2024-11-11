@@ -43,8 +43,7 @@ public class SolveQuizService {
                 .receivedScore(Long.valueOf(correctRate))
                 .build());
 
-        // 분야별 통계 업데이트
-        userAreaSolvedService.updateUserAreaSolved(solvedQuiz);
+        solvedQuiz.incrementSolvedCount();
 
         Map<String, String> result = new HashMap<>();
         result.put("정답률", correctRate);
