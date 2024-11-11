@@ -8,6 +8,8 @@ import io.swagger.v3.oas.annotations.security.SecurityScheme;
 import org.springframework.context.annotation.Configuration;
 
 //http://localhost:8080/swagger-ui/index.html
+//http://15.164.26.179/swagger-ui/index.html
+
 @OpenAPIDefinition(
         info = @Info(
                 title = "SWAGGER : Dayoung API 명세",
