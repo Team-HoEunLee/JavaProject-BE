@@ -18,11 +18,6 @@ import javax.validation.Valid;
 import javax.validation.constraints.NotNull;
 
 @Validated
-//@Valid는 기본적으로 컨트롤러에서만 동작하며 기본적으로 다른 계층에서는 검증이 되지 않는다
-//[@Validated]
-//입력 파라미터의 유효성 검증은 컨트롤러에서 최대한 처리하고 넘겨주는 것이 좋다.
-//하지만 개발을 하다보면 불가피하게 다른 곳에서 파라미터를 검증해야 할 수 있다.
-//여기서 사용해준 이유는 토큰 재발급 때문
 @Tag(name = "유저", description = "유저 엔티티입니다")
 @RestController
 @RequiredArgsConstructor
