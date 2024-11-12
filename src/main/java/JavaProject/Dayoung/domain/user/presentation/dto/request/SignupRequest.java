@@ -25,5 +25,5 @@ public class SignupRequest {
     private String introduction;
 
     @Nullable
-    private Long areaId;
+    private List<Long> areaId;
 }

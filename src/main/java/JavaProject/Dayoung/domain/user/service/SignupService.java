@@ -33,7 +33,6 @@ public class SignupService {
         String password = passwordEncoder.encode(signupRequest.getPassword());
 
         if (signupRequest.getAreaId() != null) {
-            Area area = areaRepository.findAreaById(signupRequest.getAreaId());
 
             userRepository.save(
                 User.builder()
@@ -41,7 +40,7 @@ public class SignupService {
                     .password(password)
                     .name(signupRequest.getName())
                     .introduction(signupRequest.getIntroduction())
-                    .areaIds(Collections.singletonList(signupRequest.getAreaId()))
+                    .areaIds(signupRequest.getAreaId())
                     .role(Role.STUDENT)
                     .score(0)
                     .build()
