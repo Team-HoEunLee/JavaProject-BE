@@ -17,6 +17,6 @@ public class UpdateQuizService {
     public void execute(Long quizId, UpdateQuizRequest request) {
         Quiz quiz = quizFacade.getQuiz(quizId);
 
-        quiz.updateQuiz(request.getTitle(), request.getQuestion(), request.getLevel(), request.getCodeIds(), request.getAreaIds());
+        quiz.updateQuiz(request.getTitle(), request.getQuestion(), request.getLevel(), request.getCodeIds(), request.getAreaIds(), request.getSolutions(), request.getAverage());
     }
 }

@@ -18,7 +18,7 @@ public class QueryQuizListService {
 
     private final QuizPort quizPort;
 
-    public QuizListResponse execute(String title, List<Long> areaIds, List<Level> level, Boolean isSolved, int page) {
+    public QuizListResponse execute(String title, List<Long> areaIds, List<Level> level, Boolean isSolved, int page, int solutions, int average) {
 
         QuizFilter filter = QuizFilter.builder()
                 .title(title)
@@ -27,6 +27,8 @@ public class QueryQuizListService {
                 .isSolved(isSolved)
                 .page(page)
                 .limit(15)
+                .solutions(solutions)
+                .average(average)
                 .build();
 
         List<QuizResponse> quizList = quizPort.queryAllByFilter(filter).stream()

@@ -15,6 +15,8 @@ public class QuizFilter {
     private final List<Level> levels;
     private final Boolean isSolved;
     private final int page;
+    private final int solutions;
+    private final int average;
     @Builder.Default
     private int limit = 15;
 

@@ -28,7 +28,11 @@ public class QuizListResponse {
 
         private final Level level;
 
-        private final int avgScore;
+//        private final int avgScore;
+
+        private final int solutions;
+
+        private final int average;
 
         public static QuizResponse from(Quiz quiz) {
             return QuizResponse.builder()
@@ -37,7 +41,8 @@ public class QuizListResponse {
                     .question(quiz.getQuestion())
                     .areaIds(quiz.getAreaIds())
                     .level(quiz.getLevel())
-                    .avgScore(0)
+                    .solutions(quiz.getSolutions())
+                    .average(quiz.getAverage())
                     .build();
         }
     }

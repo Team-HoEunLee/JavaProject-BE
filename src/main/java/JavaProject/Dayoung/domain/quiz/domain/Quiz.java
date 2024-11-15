@@ -39,11 +39,19 @@ public class Quiz {
     @Column(nullable = false)
     private LocalDateTime createdAt;
 
-    public void updateQuiz(String title, String question, Level level, List<Long> codeIds, List<Long> areaIds) {
+    @Column(nullable = false)
+    private int solutions;
+
+    @Column(nullable = false)
+    private int average;
+
+    public void updateQuiz(String title, String question, Level level, List<Long> codeIds, List<Long> areaIds, int solutions, int average) {
         this.title = title;
         this.question = question;
         this.level = level;
         this.codeIds = codeIds;
         this.areaIds = areaIds;
+        this.solutions = solutions;
+        this.average = average;
     }
 }

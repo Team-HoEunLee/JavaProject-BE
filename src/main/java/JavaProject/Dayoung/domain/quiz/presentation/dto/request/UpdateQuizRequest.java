@@ -19,4 +19,8 @@ public class UpdateQuizRequest {
     private List<Long> codeIds;
 
     private List<Long> areaIds;
+
+    private int solutions;
+
+    private int average;
 }
