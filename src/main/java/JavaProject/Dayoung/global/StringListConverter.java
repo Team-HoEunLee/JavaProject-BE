@@ -12,8 +12,8 @@ import java.util.List;
 @Converter
 public class StringListConverter implements AttributeConverter<List<String>, String> {
     private static final ObjectMapper mapper = new ObjectMapper()
-        .configure(DeserializationFeature.FAIL_ON_UNKNOWN_PROPERTIES, false)
-        .configure(DeserializationFeature.FAIL_ON_NULL_FOR_PRIMITIVES, false);
+            .configure(DeserializationFeature.FAIL_ON_UNKNOWN_PROPERTIES, false)
+            .configure(DeserializationFeature.FAIL_ON_NULL_FOR_PRIMITIVES, false);
 
     @Override
     public String convertToDatabaseColumn(List<String> attribute) {

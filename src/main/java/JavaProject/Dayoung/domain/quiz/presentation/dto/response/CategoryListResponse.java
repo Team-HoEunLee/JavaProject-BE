@@ -14,5 +14,4 @@ public class CategoryListResponse {
     private List<Code> codeIds;
 
     private List<Area> areaIds;
-
 }

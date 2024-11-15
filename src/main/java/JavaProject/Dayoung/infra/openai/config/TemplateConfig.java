@@ -13,7 +13,6 @@ import org.springframework.web.client.RestTemplate;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-
 @Service
 @RequiredArgsConstructor
 public class TemplateConfig {

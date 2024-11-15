@@ -16,5 +16,4 @@ public interface QuizPort {
     List<Quiz> queryAllForTemporary();
 
     List<Quiz> queryAllForMostSolved();
-
 }

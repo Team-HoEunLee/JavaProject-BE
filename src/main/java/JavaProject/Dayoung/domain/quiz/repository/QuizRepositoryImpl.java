@@ -1,7 +1,5 @@
 package JavaProject.Dayoung.domain.quiz.repository;
 
-
-import JavaProject.Dayoung.domain.area.domain.Area;
 import JavaProject.Dayoung.domain.quiz.domain.Quiz;
 import JavaProject.Dayoung.domain.quiz.domain.type.Level;
 import JavaProject.Dayoung.domain.quiz.presentation.dto.request.QuizFilter;
@@ -26,55 +24,55 @@ public class QuizRepositoryImpl implements QuizPort {
     @Override
     public List<Quiz> queryAllByFilter(QuizFilter filter) {
         return queryFactory
-            .selectFrom(quiz)
-            .join(solvedQuiz)
-            .on(solvedQuiz.id.eq(quiz.id))
-            .where(containsTitle(filter.getTitle()),
-                containsArea(filter.getAreaIds()),
-                containsLevel(filter.getLevels()),
-                equalsIsSolved(filter.getIsSolved()))
-            .orderBy(quiz.id.asc())
-            .offset(filter.getOffset())
-            .limit(filter.getLimit())
-            .fetch();
+                .selectFrom(quiz)
+                .join(solvedQuiz)
+                .on(solvedQuiz.id.eq(quiz.id))
+                .where(containsTitle(filter.getTitle()),
+                        containsArea(filter.getAreaIds()),
+                        containsLevel(filter.getLevels()),
+                        equalsIsSolved(filter.getIsSolved()))
+                .orderBy(quiz.id.asc())
+                .offset(filter.getOffset())
+                .limit(filter.getLimit())
+                .fetch();
     }
 
     @Override
     public List<Quiz> queryAllForBeginner() {
         return queryFactory
-            .selectFrom(quiz)
-            .where(quiz.level.eq(Level.EASY))
-            .limit(15)
-            .fetch();
+                .selectFrom(quiz)
+                .where(quiz.level.eq(Level.EASY))
+                .limit(15)
+                .fetch();
     }
 
     @Override
     public List<Quiz> queryAllForRecent() {
         return queryFactory
-            .selectFrom(quiz)
-            .orderBy(quiz.createdAt.desc())
-            .limit(15)
-            .fetch();
+                .selectFrom(quiz)
+                .orderBy(quiz.createdAt.desc())
+                .limit(15)
+                .fetch();
     }
 
     @Override
     public List<Quiz> queryAllForTemporary() {
         return queryFactory
-            .selectFrom(quiz)
-            //임시로 만들어둔 쿼리문입니다
-            .limit(15)
-            .fetch();
+                .selectFrom(quiz)
+                //임시로 만들어둔 쿼리문입니다
+                .limit(15)
+                .fetch();
     }
 
     @Override
     public List<Quiz> queryAllForMostSolved() {
         return queryFactory
-            .selectFrom(quiz)
-            .join(solvedQuiz).on(solvedQuiz.quiz.eq(quiz))
-            .groupBy(solvedQuiz.quiz.id)
-            .orderBy(solvedQuiz.count().desc())
-            .limit(15)
-            .fetch();
+                .selectFrom(quiz)
+                .join(solvedQuiz).on(solvedQuiz.quiz.eq(quiz))
+                .groupBy(solvedQuiz.quiz.id)
+                .orderBy(solvedQuiz.count().desc())
+                .limit(15)
+                .fetch();
     }
 
     private BooleanExpression containsTitle(String title) {

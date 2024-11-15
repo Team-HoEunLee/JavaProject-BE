@@ -21,6 +21,7 @@ import java.util.Map;
 @Transactional
 @RequiredArgsConstructor
 public class SolveQuizService {
+
     private final UserFacade userFacade;
     private final TemplateConfig templateConfig;
     private final QuizRepository quizRepository;

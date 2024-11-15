@@ -1,6 +1,5 @@
 package JavaProject.Dayoung.domain.quiz.presentation.dto.request;
 
-import JavaProject.Dayoung.domain.area.domain.Area;
 import JavaProject.Dayoung.domain.quiz.domain.type.Level;
 import lombok.Builder;
 import lombok.Getter;
@@ -18,6 +17,7 @@ public class QuizFilter {
     private final int page;
     @Builder.Default
     private int limit = 15;
+
     public int getOffset() {
         return (page - 1) * limit;
     }

@@ -7,5 +7,4 @@ import org.springframework.stereotype.Repository;
 @Repository
 @RequiredArgsConstructor
 public class SolvedQuizRepositoryImpl implements SolvedQuizPort {
-
 }

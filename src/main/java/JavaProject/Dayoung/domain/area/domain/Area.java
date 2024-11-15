@@ -1,7 +1,6 @@
 package JavaProject.Dayoung.domain.area.domain;
 
 import lombok.*;
-
 import javax.persistence.*;
 
 @Entity

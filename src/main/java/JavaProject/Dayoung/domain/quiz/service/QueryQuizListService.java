@@ -1,6 +1,5 @@
 package JavaProject.Dayoung.domain.quiz.service;
 
-import JavaProject.Dayoung.domain.area.domain.Area;
 import JavaProject.Dayoung.domain.quiz.domain.type.Level;
 import JavaProject.Dayoung.domain.quiz.presentation.dto.request.QuizFilter;
 import JavaProject.Dayoung.domain.quiz.presentation.dto.response.QuizListResponse;
@@ -22,17 +21,17 @@ public class QueryQuizListService {
     public QuizListResponse execute(String title, List<Long> areaIds, List<Level> level, Boolean isSolved, int page) {
 
         QuizFilter filter = QuizFilter.builder()
-            .title(title)
-            .areaIds(areaIds)
-            .levels(level)
-            .isSolved(isSolved)
-            .page(page)
-            .limit(15)
-            .build();
+                .title(title)
+                .areaIds(areaIds)
+                .levels(level)
+                .isSolved(isSolved)
+                .page(page)
+                .limit(15)
+                .build();
 
         List<QuizResponse> quizList = quizPort.queryAllByFilter(filter).stream()
-            .map(QuizListResponse.QuizResponse::from)
-            .toList();
+                .map(QuizListResponse.QuizResponse::from)
+                .toList();
 
         return new QuizListResponse(quizList);
     }

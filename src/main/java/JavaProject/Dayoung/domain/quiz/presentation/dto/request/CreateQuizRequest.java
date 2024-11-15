@@ -1,6 +1,5 @@
 package JavaProject.Dayoung.domain.quiz.presentation.dto.request;
 
-import JavaProject.Dayoung.domain.code.domain.Code;
 import JavaProject.Dayoung.domain.quiz.domain.type.Level;
 import lombok.Getter;
 import lombok.NoArgsConstructor;

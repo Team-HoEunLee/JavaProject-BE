@@ -30,9 +30,9 @@ public class RankListResponse {
 
         public static RankResponse of(User user) {
             return RankResponse.builder()
-                .name(user.getName())
-                .score(user.getScore())
-                .build();
+                    .name(user.getName())
+                    .score(user.getScore())
+                    .build();
         }
     }
 }

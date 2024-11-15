@@ -20,5 +20,4 @@ public class RefreshToken {
 
     @TimeToLive
     private Long expiration;
-
 }

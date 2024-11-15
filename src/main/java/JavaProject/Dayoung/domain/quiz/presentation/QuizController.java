@@ -1,6 +1,5 @@
 package JavaProject.Dayoung.domain.quiz.presentation;
 
-import JavaProject.Dayoung.domain.area.domain.Area;
 import JavaProject.Dayoung.domain.quiz.domain.type.Level;
 import JavaProject.Dayoung.domain.quiz.domain.type.QuizType;
 import JavaProject.Dayoung.domain.quiz.presentation.dto.request.CreateQuizRequest;
@@ -68,8 +67,8 @@ public class QuizController {
     @PostMapping("/solve")
     @Operation(summary = "퀴즈 풀기", description = "문제를 풀면 AI가 문제의 답변을 반환합니다.")
     public Map<String, String> solveQuiz(
-        @RequestParam(value = "quiz_id") Long quizId,
-        @RequestBody SolveQuizRequest request) {
+            @RequestParam(value = "quiz_id") Long quizId,
+            @RequestBody SolveQuizRequest request) {
         return solveQuizService.execute(quizId, request);
     }
 

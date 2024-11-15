@@ -32,5 +32,4 @@ public class UserAreaSolved {
 
     @Column(nullable = false)
     private Long solvedCount;
-
 }

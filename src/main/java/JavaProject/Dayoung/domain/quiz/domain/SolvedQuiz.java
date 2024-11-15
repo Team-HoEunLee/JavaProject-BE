@@ -2,7 +2,6 @@ package JavaProject.Dayoung.domain.quiz.domain;
 
 import JavaProject.Dayoung.domain.user.domain.User;
 import lombok.*;
-import org.hibernate.annotations.ColumnDefault;
 
 import javax.persistence.*;
 

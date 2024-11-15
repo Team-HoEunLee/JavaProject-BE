@@ -15,7 +15,6 @@ import org.springframework.util.StringUtils;
 import javax.servlet.http.HttpServletRequest;
 import java.util.Date;
 
-
 @RequiredArgsConstructor
 @Component
 public class JwtTokenProvider {

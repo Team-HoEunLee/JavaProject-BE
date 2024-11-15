@@ -1,7 +1,6 @@
 package JavaProject.Dayoung.domain.user.service;
 
 import JavaProject.Dayoung.domain.user.domain.User;
-import JavaProject.Dayoung.domain.user.domain.type.Role;
 import JavaProject.Dayoung.domain.user.facade.UserFacade;
 import JavaProject.Dayoung.domain.user.presentation.dto.request.UpdateUserInfoRequest;
 import JavaProject.Dayoung.domain.user.repository.UserRepository;
@@ -26,5 +25,3 @@ public class UpdateUserInfoService {
                 updateUserInfoRequest.getIntroduction());
     }
 }
-
-

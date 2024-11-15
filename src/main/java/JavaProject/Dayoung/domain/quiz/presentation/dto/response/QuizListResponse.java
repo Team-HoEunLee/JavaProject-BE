@@ -32,13 +32,13 @@ public class QuizListResponse {
 
         public static QuizResponse from(Quiz quiz) {
             return QuizResponse.builder()
-                .quizId(quiz.getId())
-                .title(quiz.getTitle())
-                .question(quiz.getQuestion())
-                .areaIds(quiz.getAreaIds())
-                .level(quiz.getLevel())
-                .avgScore(0)
-                .build();
+                    .quizId(quiz.getId())
+                    .title(quiz.getTitle())
+                    .question(quiz.getQuestion())
+                    .areaIds(quiz.getAreaIds())
+                    .level(quiz.getLevel())
+                    .avgScore(0)
+                    .build();
         }
     }
 }

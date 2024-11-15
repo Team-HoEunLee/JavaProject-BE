@@ -33,7 +33,7 @@ public class QueryBannerQuizService {
 
     private List<QuizListResponse.QuizResponse> convertToQuizListResponse(List<Quiz> quizzes) {
         return quizzes.stream()
-            .map(QuizListResponse.QuizResponse::from)
-            .collect(Collectors.toList());
+                .map(QuizListResponse.QuizResponse::from)
+                .collect(Collectors.toList());
     }
 }
