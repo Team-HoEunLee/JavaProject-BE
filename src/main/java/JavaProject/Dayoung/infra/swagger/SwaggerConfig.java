@@ -13,7 +13,7 @@ import org.springframework.context.annotation.Configuration;
 @OpenAPIDefinition(
         info = @Info(
                 title = "SWAGGER : Dayoung API 명세",
-                description = "안녕하세요"
+                description = "나는 김승원이다. 이 명세서를 해킹했지. \n 다들 수고해라~~!! \n 곧 있으면 이 명세서 날려버릴 거당 \\ (>.<) /"
         ),
         security = @SecurityRequirement(name = "bearerAuth")
 )
