@@ -22,7 +22,7 @@ spring:
 
 jwt:
   header: ${HEADER:Authorization}
-  prefix : ${PREFIX:Bearer}
+  prefix: ${PREFIX:Bearer}
   secret-key: ${JWT_SECRET_KEY:dfhasjkdfhayffhdtyhdfkjfvfddkvnvssdvnknkknlnkdkmnlvknllnkknlvfdhydshghjkdfaskverafter}
   access-exp: ${JWT_ACCESS_EXP:10000}
   refresh-exp: ${JWT_REFRESH_EXP:604800}
@@ -37,4 +37,4 @@ logging:
           descriptor:
             sql: trace #hibernate이 보여주는 로그에 있는 ?에 어떤 값이 들어갔는지 구체적으로 알고 싶을 때 사용하는 옵션
 chatgpt:
-  api-key: ${OPEN_AI_KEY:asdfghjkl}
+  api-key: ${OPEN_AI_KEY:dsd}

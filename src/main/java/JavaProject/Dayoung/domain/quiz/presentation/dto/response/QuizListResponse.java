@@ -28,8 +28,6 @@ public class QuizListResponse {
 
         private final Level level;
 
-//        private final int avgScore;
-
         private final int solutions;
 
         private final int average;

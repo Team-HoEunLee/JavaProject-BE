@@ -53,11 +53,9 @@ public class QuizController {
             @RequestParam(value = "area_ids", required = false) List<Long> areaIds,
             @RequestParam(value = "level", required = false) List<Level> level,
             @RequestParam(value = "is_solved", required = false) Boolean isSolved,
-            @RequestParam(value = "page", defaultValue = "1") @Positive int page,
-            @RequestParam(value = "solutions", required = false) int solutions,
-            @RequestParam(value = "average", required = false) int average
+            @RequestParam(value = "page", defaultValue = "1") @Positive int page
     ) {
-        return queryQuizListService.execute(title, areaIds, level, isSolved, page, solutions, average);
+        return queryQuizListService.execute(title, areaIds, level, isSolved, page);
     }
 
     @GetMapping("/category")

@@ -25,13 +25,12 @@ public class QuizRepositoryImpl implements QuizPort {
     public List<Quiz> queryAllByFilter(QuizFilter filter) {
         return queryFactory
                 .selectFrom(quiz)
-                .join(solvedQuiz)
+                .leftJoin(solvedQuiz)
                 .on(solvedQuiz.id.eq(quiz.id))
                 .where(containsTitle(filter.getTitle()),
                         containsArea(filter.getAreaIds()),
                         containsLevel(filter.getLevels()),
                         equalsIsSolved(filter.getIsSolved()))
-                .orderBy(quiz.id.asc())
                 .offset(filter.getOffset())
                 .limit(filter.getLimit())
                 .fetch();

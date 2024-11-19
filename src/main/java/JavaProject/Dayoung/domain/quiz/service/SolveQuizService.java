@@ -44,7 +44,7 @@ public class SolveQuizService {
                 .receivedScore(Long.valueOf(correctRate))
                 .build());
 
-        solvedQuiz.incrementSolvedCount();
+        //solvedQuiz.incrementSolvedCount();
 
         Map<String, String> result = new HashMap<>();
         result.put("정답률", correctRate);
