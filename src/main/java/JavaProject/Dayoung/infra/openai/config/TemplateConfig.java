@@ -26,11 +26,12 @@ public class TemplateConfig {
     public ChatGPTRequest promptMapping(String quiz, SolveQuizRequest request) {
         String question =
                 "너는 나에게 존대말을 사용해야해" +
-                        "너는 문제에 대한 답변을 듣고 나에게 정답률을 알려주고 문제의 답변에 대한 피드백을 해줘야해\s" +
-                        "면접자의 답변이 정답에 조금이라도 가깝다면 정답률을 높게 주고, 피드백에도 잘 했다고 적어줘야해" +
-                        "너의 답변의 형식은 이러해야해 정답률: 20%, 피드백: ... \s" +
-                        "문제는 이러해 " + quiz + "\s" +
-                        "면접자의 답변은 이거야 " + request.getAnswer();
+                        "너는 질문에 대한 답변을 듣고 나에게 정답률을 알려주고 질문의 답변에 대한 피드백을 해줘야해\s" +
+                        "면접자의 답변이 옳고, 잘 설명하였다면 정답률을 80~100을 줘. 피드백에도 잘 했다고 적어줘야해 만약 면접자의 답변이 애매하면 40~79 점을 줘. 만약 면접자의 답변이 질문과 아예 관련이 없거나 전혀 틀렸다면 0~30점을 줘. 피드백도 해주고" +
+                        "너의 답변의 형식은 반드시 이러해야해 정답률: 20%, 피드백: ... \s" +
+                        "문제는 이러해 " + request.getQuiz() + "\s" +
+                        "면접자의 답변은 이거야 " + request.getAnswer() + "\s" + "이제 나에게 '정답률: ??%, 피드백: ... ' 이러한 형식으로 답변을 줘"
+            ;
 
         return new ChatGPTRequest("gpt-3.5-turbo", question);
     }
@@ -53,7 +54,7 @@ public class TemplateConfig {
 
     public String correctRateMatcher(String responseContent) {
 
-        Pattern correctRatePattern = Pattern.compile("정답률\\s*:\\s*(\\d+)%");
+        Pattern correctRatePattern = Pattern.compile("정답률\\s*:?\\s*(\\d+)%");
 
         Matcher correctRateMatcher = correctRatePattern.matcher(responseContent);
         String correctRate = "";
